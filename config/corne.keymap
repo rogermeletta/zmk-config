@@ -57,6 +57,27 @@
  */
 
 
+&caps_word {
+  continue-list = <UNDERSCORE MINUS>;
+};
+
+// MACROS
+#define U_UNDO  LG(Z)
+#define U_CUT   LG(X)
+#define U_COPY  LG(C)
+#define U_PSTE  LG(V)
+#define U_REDO  LS(LG(Z))
+#define U_CLIP  LC(LG(C))
+#define U_SHOT  LS(LG(N4))
+
+// CONFIGURATION
+#define COMBO(NAME, KEYPOS) \
+  combo_##NAME { \
+      timeout-ms = <40>; \
+      key-positions = <KEYPOS>; \
+      bindings = <&kp NAME>; \
+  };
+
 / {
 
         combos {
