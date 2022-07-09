@@ -138,14 +138,14 @@
                 num_layer {
 // -----------------------------------------------------------------------------------------
 // | TAB  | BL_CYL    |     |     |     |     |   |  /  |  7  |  8  |  9  |  -  |      |
-// | CTRL |     |     |     |     |     |   |  *  |  4  |  5  |  6  |  +  |      |
-// | SHFT |     |     |     |     |     |   |  0  |  1  |  2  |  3  | ENT |      |
+// | CTRL |           |     |     |     |     |   |  *  |  4  |  5  |  6  |  +  |      |
+// | SHFT |           |     |     |     |     |   |  0  |  1  |  2  |  3  | ENT |      |
 //                    | GUI |LALT | SPC |   | BSP |?????|  .  |
 
                         bindings = <
    &kp TAB    &rgb_ug RGB_EF       &none      &none     &none  &none        &kp FSLH          &kp N7   &kp N8     &kp N9  &kp KP_MINUS  &none
-   &kp LCTRL  &none     &none      &none     &none  &none        &kp KP_ASTERISK   &kp N4   &kp N5     &kp N6  &kp KP_PLUS   &none
-   &kp LSHFT  &none     &none      &none     &none  &none        &kp N0            &kp N1   &kp N2     &kp N3  &kp RET       &none
+   &kp LCTRL  &none                &none      &none     &none  &none        &kp KP_ASTERISK   &kp N4   &kp N5     &kp N6  &kp KP_PLUS   &none
+   &kp LSHFT  &none                &none      &none     &none  &none        &kp N0            &kp N1   &kp N2     &kp N3  &kp RET       &none
                         &kp LGUI   &kp LALT     &kp SPACE        &kp BSPC          &none    &kp KP_DOT
                         >;
                 };
