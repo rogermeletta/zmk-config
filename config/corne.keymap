@@ -124,7 +124,8 @@
 // |  ESC |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |  BKSP   |
 // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '      |
 // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |  SHIFT  |
-//                    | GUI | SPC | LWR |   | RSE | ENT  | ALT |
+//                    | GUI | SPC
+    | LWR |   | RSE | ENT  | ALT |
                         bindings = <
    &kp ESC   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
    &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
@@ -133,29 +134,16 @@
                         >;
                 };
 
-                colmak_layer {
-// -----------------------------------------------------------------------------------------
-// |  MIN |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L   |  U  |  Y  |  '  | PLUS |
-// | CTRL |  A  |  R  |  S  |  T  |  G  |   |  M  |  N   |  E  |  I  |  O  |  ;   |
-// |  (   |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H   |  ,  |  .  |  /  |  )   |
-//                    | TAB | BSP | DEL |   | ESC | SPC  | ENT |
-                        bindings = <
-   &kp MINUS &kp Q      &kp W      &kp F       &kp P        &kp B      &kp J   &kp L            &kp U       &kp Y       &kp SQT    &kp PLUS
-   &kp LCTRL &mt LGUI A &mt LALT R &mt LCTRL S &mt LSHIFT T &kp G      &kp M   &mt RSHIFT N     &mt RCTRL E &mt RALT I  &mt RGUI O &kp SEMI
-   &kp LPAR  &kp Z      &kp X      &kp C       &kp D        &kp V      &kp K   &kp H            &kp COMMA   &kp DOT     &kp FSLH   &kp RPAR
-                                   &kp TAB     &kp BSPC     &kp DEL    &kp ESC &mt RSHIFT SPACE &kp RET
-                        >;
-                };
 
                 num_layer {
 // -----------------------------------------------------------------------------------------
-// |      |     |     |     |     |     |   |  /  |  7  |  8  |  9  |  -  |      |
+// | TAB  | BL_CYL    |     |     |     |     |   |  /  |  7  |  8  |  9  |  -  |      |
 // | CTRL |     |     |     |     |     |   |  *  |  4  |  5  |  6  |  +  |      |
 // | SHFT |     |     |     |     |     |   |  0  |  1  |  2  |  3  | ENT |      |
 //                    | GUI |LALT | SPC |   | BSP |?????|  .  |
 
                         bindings = <
-   &kp TAB    &none     &none      &none     &none  &none        &kp FSLH          &kp N7   &kp N8     &kp N9  &kp KP_MINUS  &none
+   &kp TAB    &bl BL_CYCLE     &none      &none     &none  &none        &kp FSLH          &kp N7   &kp N8     &kp N9  &kp KP_MINUS  &none
    &kp LCTRL  &none     &none      &none     &none  &none        &kp KP_ASTERISK   &kp N4   &kp N5     &kp N6  &kp KP_PLUS   &none
    &kp LSHFT  &none     &none      &none     &none  &none        &kp N0            &kp N1   &kp N2     &kp N3  &kp RET       &none
                         &kp LGUI   &kp LALT     &kp SPACE        &kp BSPC          &none    &kp KP_DOT
@@ -188,5 +176,20 @@
    &kp LSHFT  &trans       &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
                                         &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
                         >;
-                };        };
+                };
+
+                colmak_layer {
+// -----------------------------------------------------------------------------------------
+// |  MIN |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L   |  U  |  Y  |  '  | PLUS |
+// | CTRL |  A  |  R  |  S  |  T  |  G  |   |  M  |  N   |  E  |  I  |  O  |  ;   |
+// |  (   |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H   |  ,  |  .  |  /  |  )   |
+//                    | TAB | BSP | DEL |   | ESC | SPC  | ENT |
+                        bindings = <
+   &kp MINUS &kp Q      &kp W      &kp F       &kp P        &kp B      &kp J   &kp L            &kp U       &kp Y       &kp SQT    &kp PLUS
+   &kp LCTRL &mt LGUI A &mt LALT R &mt LCTRL S &mt LSHIFT T &kp G      &kp M   &mt RSHIFT N     &mt RCTRL E &mt RALT I  &mt RGUI O &kp SEMI
+   &kp LPAR  &kp Z      &kp X      &kp C       &kp D        &kp V      &kp K   &kp H            &kp COMMA   &kp DOT     &kp FSLH   &kp RPAR
+                                   &kp TAB     &kp BSPC     &kp DEL    &kp ESC &mt RSHIFT SPACE &kp RET
+                        >;
+                };
+        };
 };
