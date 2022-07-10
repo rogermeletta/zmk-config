@@ -137,7 +137,7 @@
    &kp ESC   &kp Q      &kp W      &kp F        &kp P        &kp B           &kp J   &kp L            &kp U       &kp Y       &kp SQT    &kp BSPC
    &kp TAB   &kp A      &kp R      &kp S        &kp T        &kp G           &kp M   &kp N            &kp E       &kp I       &kp O      &mt SEMI RET
    &kp LSHFT &kp Z      &kp X      &kp C        &kp D        &kp V           &kp K   &kp H            &kp COMMA   &kp DOT     &kp FSLH   &kp RSHIFT
-                                   &kp LCTRL    &mt LGUI RET &mo MISC        &mt NUM RET &kp SPACE    &kp RALT
+                                   &kp LCTRL    &mt LGUI RET &lt MISC SPACE  &lt NUM RET &lt SYSTEM SPACE    &kp RALT
                         >;
                 };
 
