@@ -96,7 +96,7 @@
           COMBO(DOLLAR, 3 13)
           COMBO(TILDE, 10 11)
           COMBO(COLON, 11 12)
-          COMBO(LEFT_PARENTHESIS, 12 13)
+          COMBO(LEFT_PARENTHESIS, 4 5)
           COMBO(PERCENT, 11 21)
           COMBO(CARET, 12 22)
           COMBO(AMPERSAND, 13 23)
@@ -112,7 +112,7 @@
           COMBO(EQUAL, 6 16)
           COMBO(PIPE, 7 17)
           COMBO(BACKSLASH, 8 18)
-          COMBO(RIGHT_PARENTHESIS, 16 17)
+          COMBO(RIGHT_PARENTHESIS, 6 7)
           COMBO(MINUS, 17 18)
           COMBO(PLUS, 18 19)
           COMBO(ASTERISK, 16 26)
@@ -153,7 +153,7 @@
    &kp MINUS &kp Q      &kp W      &kp F       &kp P        &kp B      &kp J   &kp L            &kp U       &kp Y       &kp SQT    &kp PLUS
    &kp LCTRL &mt LGUI A &mt LALT R &mt LCTRL S &mt LSHIFT T &kp G      &kp M   &mt RSHIFT N     &mt RCTRL E &mt RALT I  &mt RGUI O &kp SEMI
    &kp LPAR  &kp Z      &kp X      &kp C       &kp D        &kp V      &kp K   &kp H            &kp COMMA   &kp DOT     &kp FSLH   &kp RPAR
-                                   &kp TAB     &kp BSPC     &kp DEL    &kp ESC &mt RSHIFT SPACE &kp RET
+                                   &kp TAB     &kp BSPC     &mt MISC DEL  &mt NUM ESC &mt RSHIFT SPACE &kp RET
                         >;
                 };
 
