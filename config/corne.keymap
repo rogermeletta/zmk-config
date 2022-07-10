@@ -108,7 +108,7 @@
 
           // Right-hand combos
           COMBO(RIGHT_BRACE, 19 20)
-          COMBO(DOUBLE_QUOTES, 7 8)
+          //COMBO(DOUBLE_QUOTES, 7 8)
           COMBO(EQUAL, 6 16)
           COMBO(PIPE, 7 17)
           COMBO(BACKSLASH, 8 18)
@@ -137,7 +137,7 @@
    &kp ESC   &kp Q      &kp W      &kp F        &kp P        &kp B           &kp J   &kp L            &kp U       &kp Y       &kp SQT    &kp BSPC
    &kp LCTRL &kp A      &kp R      &kp S        &kp T        &kp G           &kp M   &kp N            &kp E       &kp I       &kp O      &mt SEMI RET
    &kp LPAR  &kp Z      &kp X      &kp C        &kp D        &kp V           &kp K   &kp H            &kp COMMA   &kp DOT     &kp FSLH   &kp RSHIFT
-                                   &kp LCTRL    &mt LGUI RET &mo MISC        &mo NUM &kp SPACE        &kp RALT
+                                   &kp LCTRL    &mt LGUI RET &mo MISC        &mt NUM RET &kp SPACE    &kp RALT
                         >;
                 };
 
@@ -168,10 +168,10 @@
 //                    | GUI |LALT | SPC |   | BSP |?????|  .  |
 
                         bindings = <
-   &kp TAB    &rgb_ug RGB_EFF      &ext_power EP_TOG &none     &none  &none        &kp FSLH          &kp N7   &kp N8     &kp N9  &kp KP_MINUS  &none
-   &kp LCTRL  &none     &none      &none     &none   &none        &kp KP_ASTERISK   &kp N4   &kp N5     &kp N6  &kp KP_PLUS   &none
-   &kp LSHFT  &none     &none      &none     &none   &none        &kp N0            &kp N1   &kp N2     &kp N3  &kp RET       &none
-                        &kp LGUI   &kp LALT     &kp SPACE        &kp BSPC          &mo SYSTEM    &kp KP_DOT
+   &kp TAB    &rgb_ug RGB_EFF      &ext_power EP_TOG &none     &none  &none      &kp FSLH          &kp N7   &kp N8     &kp N9  &kp KP_MINUS  &none
+   &kp LCTRL  &none     &none      &none     &none   &none     &kp KP_ASTERISK   &kp N4   &kp N5     &kp N6  &kp KP_PLUS   &none
+   &kp LSHFT  &none     &none      &none     &none   &none     &kp N0            &kp N1   &kp N2     &kp N3  &kp RET       &none
+                        &kp LGUI   &kp LALT     &kp SPACE      &kp BSPC          &mt SYSTEM N0   &kp KP_DOT
                         >;
                 };
 
