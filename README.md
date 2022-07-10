@@ -1,9 +1,18 @@
 # My current crkbd keymap
 
+### Colemak Layer
 ![Colemak Layer](./assets/colemak_layer.png)
+
+### QWERTY Layer
 ![QWERTY Layer](./assets/qwerty_layer.png)
+
+### Num Layer
 ![Num Layer](./assets/num_layer.png)
+
+### Misc Layer
 ![Misc Layer](./assets/misc_layer.png)
+
+### System Layer
 ![System Layer](./assets/system_layer.png)
 
 
