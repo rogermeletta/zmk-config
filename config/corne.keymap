@@ -90,7 +90,7 @@
 
           // Left-hand combos
           COMBO(AT_SIGN, 1 2)
-          COMBO(LEFT_BRACE, 17 18)
+          COMBO(LEFT_BRACE, 16 17)
           COMBO(EXCLAMATION, 1 11)
           COMBO(HASH, 2 12)
           COMBO(DOLLAR, 3 13)
@@ -102,12 +102,12 @@
           COMBO(AMPERSAND, 13 23)
           COMBO(GRAVE, 20 21)
           COMBO(SEMICOLON, 21 22)
-          COMBO(LEFT_BRACKET, 29 30)
+          COMBO(LEFT_BRACKET, 28 29)
           // COMBO(U_COPY, 22 23)
           // COMBO(U_PASTE, 22 23)
 
           // Right-hand combos
-          COMBO(RIGHT_BRACE, 19 20)
+          COMBO(RIGHT_BRACE, 18 19)
           COMBO(DOUBLE_QUOTES, 7 8)
           COMBO(EQUAL, 6 16)
           COMBO(PIPE, 7 17)
@@ -118,13 +118,28 @@
           COMBO(ASTERISK, 16 26)
           COMBO(LESS_THAN, 17 27)
           COMBO(GREATER_THAN, 18 28)
-          COMBO(RIGHT_BRACKET, 31 32)
+          COMBO(RIGHT_BRACKET, 30 31)
           COMBO(UNDERSCORE, 27 28)
           COMBO(QUESTION, 28 29)
         };
 
         keymap {
                 compatible = "zmk,keymap";
+
+                colmak_layer {
+                        label = "COLEMAK";
+// -----------------------------------------------------------------------------------------
+// |  MIN |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L   |  U  |  Y  |  '  | PLUS |
+// | CTRL |  A  |  R  |  S  |  T  |  G  |   |  M  |  N   |  E  |  I  |  O  |  ;   |
+// |  (   |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H   |  ,  |  .  |  /  |  )   |
+//                    | TAB | BSP | DEL |   | ESC | SPC  | ENT |
+                        bindings = <
+   &kp ESC   &kp Q      &kp W      &kp F        &kp P        &kp B           &kp J   &kp L            &kp U       &kp Y       &kp SQT    &kp BSPC
+   &kp LCTRL &kp A      &kp R      &kp S        &kp T        &kp G           &kp M   &kp N            &kp E       &kp I       &kp O      &kp SEMI
+   &kp LPAR  &kp Z      &kp X      &kp C        &kp D        &kp V           &kp K   &kp H            &kp COMMA   &kp DOT     &kp FSLH   &kp RSHIFT
+                                   &kp LCTRL    &mt LGUI RET &mt LALT MISC   &mo NUM &kp SPACE        &kp RALT
+                        >;
+                };
 
                 qwerty_layer {
                         label = "QWERTY";
@@ -138,24 +153,11 @@
    &kp ESC   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
    &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp RSHIFT
-                  &kp LGUI   &kp RET &mo MISC   &mo NUM &kp SPACE  &kp RALT
+                   &trans   &trans &trans   &trans &trans  &trans
                         >;
                 };
 
-                colmak_layer {
-                        label = "COLEMAK";
-// -----------------------------------------------------------------------------------------
-// |  MIN |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L   |  U  |  Y  |  '  | PLUS |
-// | CTRL |  A  |  R  |  S  |  T  |  G  |   |  M  |  N   |  E  |  I  |  O  |  ;   |
-// |  (   |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H   |  ,  |  .  |  /  |  )   |
-//                    | TAB | BSP | DEL |   | ESC | SPC  | ENT |
-                        bindings = <
-   &kp ESC   &kp Q      &kp W      &kp F       &kp P        &kp B      &kp J   &kp L            &kp U       &kp Y       &kp SQT    &kp BSPC
-   &kp LCTRL &mt LGUI A &mt LALT R &mt LCTRL S &mt LSHIFT T &kp G      &kp M   &mt RSHIFT N     &mt RCTRL E &mt RALT I  &mt RGUI O &kp SEMI
-   &kp LPAR  &kp Z      &kp X      &kp C       &kp D        &kp V      &kp K   &kp H            &kp COMMA   &kp DOT     &kp FSLH   &kp RPAR
-                                   &kp TAB     &kp BSPC     &trans     &trans  &mt RSHIFT SPACE &kp RET
-                        >;
-                };
+
 
                 num_layer {
                         label = "NUM";
@@ -166,9 +168,9 @@
 //                    | GUI |LALT | SPC |   | BSP |?????|  .  |
 
                         bindings = <
-   &kp TAB    &rgb_ug RGB_EFF      &ext_power EP_TOG     &none     &none  &none        &kp FSLH          &kp N7   &kp N8     &kp N9  &kp KP_MINUS  &none
-   &kp LCTRL  &none     &none      &none     &none  &none        &kp KP_ASTERISK   &kp N4   &kp N5     &kp N6  &kp KP_PLUS   &none
-   &kp LSHFT  &none     &none      &none     &none  &none        &kp N0            &kp N1   &kp N2     &kp N3  &kp RET       &none
+   &kp TAB    &rgb_ug RGB_EFF      &ext_power EP_TOG &none     &none  &none        &kp FSLH          &kp N7   &kp N8     &kp N9  &kp KP_MINUS  &none
+   &kp LCTRL  &none     &none      &none     &none   &none        &kp KP_ASTERISK   &kp N4   &kp N5     &kp N6  &kp KP_PLUS   &none
+   &kp LSHFT  &none     &none      &none     &none   &none        &kp N0            &kp N1   &kp N2     &kp N3  &kp RET       &none
                         &kp LGUI   &kp LALT     &kp SPACE        &kp BSPC          &mo SYSTEM    &kp KP_DOT
                         >;
                 };
@@ -176,15 +178,15 @@
                 misc_layer {
                         label = "MISC";
 // -----------------------------------------------------------------------------------------
-// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-// | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-// | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
+// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &     |  UP    |  (      |  )  | BKSP |
+// | CTRL |     |     |     |     |     |   |  -  |  LEFT  |  DOWN  |  RIGHT  |  \  |  `   |
+// | SHFT |     |     |     |     |     |   |  _  |  +     |  {     |  }      | "|" |  ~   |
+//                    | GUI |     | SPC |   | ENT |        | ALT    |
                         bindings = <
-   &kp  TAB  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS       &mt KP_MULTIPLY UP &kp LPAR       &kp RPAR &kp BSPC
-   &kp LCTRL &trans   &trans &trans   &trans   &trans      &kp MINUS &mt EQUAL LEFT &mt LBKT DOWN      &mt RBKT RIGHT &kp BSLH &kp GRAVE
-   &kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS       &kp LBRC           &kp RBRC       &kp PIPE &kp TILDE
-                             &kp LGUI &trans   &kp SPACE   &kp RET   &trans         &kp RALT
+   &kp  TAB  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS &kp UP   &kp LPAR  &kp RPAR &kp BSPC
+   &kp LCTRL &trans   &trans &trans   &trans   &trans      &kp MINUS &kp LEFT &kp DOWN &kp RIGHT &kp BSLH &kp GRAVE
+   &kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS &kp LBRC &kp RBRC  &kp PIPE &kp TILDE
+                             &kp LGUI &trans   &kp SPACE   &kp RET   &trans   &kp RALT
                         >;
                 };
 
