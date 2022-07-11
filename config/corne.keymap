@@ -6,73 +6,72 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/led/led.h>
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/outputs.h>
-// #include <dt-bindings/zmk/backlight.h>
-
+#include <dt-bindings/zmk/bt.h>// #include <dt-bindings/zmk/backlight.h>
 #define QWERTY   0
 #define COLEMAK  1
 #define NUM      2
 #define MISC     3
-#define SYSTEM   4
-
-/*
+#define SYSTEM   4/*
  * Temporarily here because nice nano v2 spi is not defined on ZMk Yet
  * Source: https://github.com/zmkfirmware/zmk/blob/main/app/boards/shields/reviung41/boards/nice_nano.overlay
  * GitHub Issue: https://github.com/zmkfirmware/zmk/issues/885
  */
-
 &spi1 {
-        compatible = "nordic,nrf-spim";
-        status = "okay";
-        mosi-pin = <6>;
-        // Unused pins, needed for SPI definition, but not used by the ws2812 driver itself.
-        sck-pin = <5>;
-        miso-pin = <7>;
+    compatible = "nordic,nrf-spim";
+    status = "okay";
+    mosi-pin = <6>;
 
-        led_strip: ws2812@0 {
-                compatible = "worldsemi,ws2812-spi";
-                label = "WS2812";
+    // Unused pins, needed for SPI definition, but not used by the ws2812 driver itself.
 
-                /* SPI */
-                reg = <0>; /* ignored, but necessary for SPI bindings */
-                spi-max-frequency = <4000000>;
+    sck-pin = <5>;
+    miso-pin = <7>;
 
-                /* WS2812 */
-                chain-length = <27>; /* arbitrary; change at will */
-                spi-one-frame = <0x70>;
-                spi-zero-frame = <0x40>;
-                color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
-        };
+    led_strip: ws2812 {
+        0
+
+        compatible = "worldsemi,ws2812-spi";
+        label = "WS2812";
+
+        /* SPI */
+
+        reg = <0>;/* ignored, but necessary for SPI bindings */
+        spi-max-frequency = <4000000>;
+
+        /* WS2812 */
+
+        chain-length = <27>;/* arbitrary; change at will */
+        spi-one-frame = <0x70>;
+        spi-zero-frame = <0x40>;
+        color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
+    };
 };
 
 / {
-        chosen {
-                zmk,underglow = &led_strip;
-        };
+    chosen {
+        zmk,underglow = &led_strip;
+    };
 };
+
 /*
  * Temporarily here because nice nano v2 spi is not defined on ZMk YET
  */
 
-
 &caps_word {
-  continue-list = <UNDERSCORE MINUS>;
+    continue-list = <UNDERSCORE MINUS>;
 };
 
 // MACROS
+
 #define U_UNDO  LG(Z)
 #define U_CUT   LG(X)
 #define U_COPY  LG(C)
 #define U_PSTE  LG(V)
 #define U_REDO  LS(LG(Z))
 #define U_CLIP  LC(LG(C))
-#define U_SHOT  LS(LG(N4))
-
-// CONFIGURATION
+#define U_SHOT  LS(LG(N4))// CONFIGURATION
 #define COMBO(NAME, KEYPOS) \
   combo_##NAME { \
       timeout-ms = <40>; \
@@ -80,19 +79,20 @@
       bindings = <&kp NAME>; \
   };
 
+
+
 / {
-        combos {
-          compatible = "zmk,combos";
+    combos {
+        compatible = "zmk,combos";
 
+        // -----------------------------------------------------------------------------------------
+        // |   0  |   1  |   2  |   3  |   4  |   5    |   |   6  |   7  |   8  |   9  |  10  |  11  |
+        // |  12  |  13  |  14  |  15  |  16  |  17    |   |  18  |  19  |  20  |  21  |  22  |  23  |
+        // |  24  |  25  |  26  |  27  |  28  |  29    |   |  30  |  31  |  32  |  33  |  34  |  35  |
+        //                      |  36  |  37  |  38    |   |  39  |  40  |  41  |
+        // Left-hand combos
 
-          // -----------------------------------------------------------------------------------------
-          // |   0  |   1  |   2  |   3  |   4  |   5    |   |   6  |   7  |   8  |   9  |  10  |  11  |
-          // |  12  |  13  |  14  |  15  |  16  |  17    |   |  18  |  19  |  20  |  21  |  22  |  23  |
-          // |  24  |  25  |  26  |  27  |  28  |  29    |   |  30  |  31  |  32  |  33  |  34  |  35  |
-          //                      |  36  |  37  |  38    |   |  39  |  40  |  41  |
-
-          // Left-hand combos
-          COMBO(AT_SIGN, 1 2)
+        COMBO(AT_SIGN, 1 2)
           COMBO(LEFT_BRACE, 15 16)
           COMBO(LEFT_PARENTHESIS, 3 4)
           COMBO(LEFT_BRACKET, 27 28)
@@ -106,11 +106,12 @@
           COMBO(AMPERSAND, 13 23)
           COMBO(GRAVE, 20 21)
           COMBO(SEMICOLON, 21 22)
-          // COMBO(U_COPY, 22 23)
-          // COMBO(U_PASTE, 22 23)
 
-          // Right-hand combos
-          COMBO(RIGHT_BRACE, 19 20)
+        // COMBO(U_COPY, 22 23)
+        // COMBO(U_PASTE, 22 23)
+        // Right-hand combos
+
+        COMBO(RIGHT_BRACE, 19 20)
           COMBO(RIGHT_PARENTHESIS, 7 8)
           COMBO(RIGHT_BRACKET, 31 32)
           COMBO(SINGLE_QUOTE, 15 20)
@@ -125,88 +126,94 @@
           COMBO(GREATER_THAN, 18 28)
           COMBO(UNDERSCORE, 27 28)
           COMBO(QUESTION, 28 29)
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        COLEMAK {
+            label = "COLEMAK";
+
+            // -----------------------------------------------------------------------------------------
+            // |  ESC  |  Q  |  W  |  F   |  P  |  B    |   |  J  |  L   |  U  |  Y  |  '  | PLUS |
+            // |  TAB  |  A  |  R  |  S   |  T  |  G    |   |  M  |  N   |  E  |  I  |  O  |  ;   |
+            // | SHIFT |  Z  |  X  |  C   |  D  |  V    |   |  K  |  H   |  ,  |  .  |  /  |  )   |
+            //                     | CTRL | CMD | SPACE |   | ESC | SPC  | RET |
+
+            bindings = <
+   &kp ESC   &kp Q   &kp W      &kp F         &kp P        &kp B      &kp J        &kp L      &kp U    &kp Y   &kp SQT      &kp BSPC
+   &kp TAB   &kp A   &kp R      &kp S         &kp T        &kp G      &kp M        &kp N      &kp E    &kp I     &kp O  &mt SEMI RET
+ &kp LSHFT   &kp Z   &kp X      &kp C         &kp D        &kp V      &kp K        &kp H  &kp COMMA  &kp DOT  &kp FSLH    &kp RSHIFT
+                            &kp LCTRL  &mt LGUI RET  &lt 3 SPACE  &lt 2 RET  &lt 4 SPACE   &kp RALT
+            >;
         };
 
-        keymap {
-                compatible = "zmk,keymap";
+        QWERTY {
+            label = "QWERTY";
 
-                colmak_layer {
-                        label = "COLEMAK";
-// -----------------------------------------------------------------------------------------
-// |  ESC  |  Q  |  W  |  F   |  P  |  B    |   |  J  |  L   |  U  |  Y  |  '  | PLUS |
-// |  TAB  |  A  |  R  |  S   |  T  |  G    |   |  M  |  N   |  E  |  I  |  O  |  ;   |
-// | SHIFT |  Z  |  X  |  C   |  D  |  V    |   |  K  |  H   |  ,  |  .  |  /  |  )   |
-//                     | CTRL | CMD | SPACE |   | ESC | SPC  | RET |
-                        bindings = <
-   &kp ESC      &kp Q    &kp W    &kp F        &kp P           &kp B                 &kp J          &kp L               &kp U        &kp Y      &kp SQT     &kp BSPC
-   &kp TAB      &kp A    &kp R    &kp S        &kp T           &kp G                 &kp M          &kp N               &kp E        &kp I      &kp O       &mt SEMI RET
-   &kp LSHFT    &kp Z    &kp X    &kp C        &kp D           &kp V                 &kp K          &kp H               &kp COMMA    &kp DOT    &kp FSLH    &kp RSHIFT
-                                  &kp LCTRL    &mt LGUI RET    &lt MISC SPACE        &lt NUM RET    &lt SYSTEM SPACE    &kp RALT
-                        >;
-                };
+            // -----------------------------------------------------------------------------------------
+            // |  ESC |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |  BKSP   |
+            // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '      |
+            // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |  SHIFT  |
+            //                    | GUI | SPC | LWR |   | RSE | RET  | ALT |
 
-                qwerty_layer {
-                        label = "QWERTY";
-
-// -----------------------------------------------------------------------------------------
-// |  ESC |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |  BKSP   |
-// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '      |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |  SHIFT  |
-//                    | GUI | SPC | LWR |   | RSE | RET  | ALT |
-                        bindings = <
-   &kp ESC      &kp Q    &kp W    &kp E    &kp R    &kp T        &kp Y    &kp U    &kp I        &kp O      &kp P       &kp BSPC
-   &kp LCTRL    &kp A    &kp S    &kp D    &kp F    &kp G        &kp H    &kp J    &kp K        &kp L      &kp SEMI    &kp SQT
-   &kp LSHFT    &kp Z    &kp X    &kp C    &kp V    &kp B        &kp N    &kp M    &kp COMMA    &kp DOT    &kp FSLH    &kp RSHIFT
-                                  &trans   &trans   &trans       &trans   &trans   &trans
-                        >;
-                };
-
-                num_layer {
-                        label = "NUM";
-// -------------------------------------------------------------------------------
-// |      |     |     |     |     |     |   |  /  |  7  |  8  |  9  |  -  |      |
-// | CTRL |     |     |     |     |     |   |  *  |  4  |  5  |  6  |  +  |      |
-// | SHFT |     |     |     |     |     |   |  0  |  1  |  2  |  3  | RET |      |
-//                    | GUI |LALT | SPC |   | BSP |?????|  .  |
-
-                        bindings = <
-   &kp TAB    &rgb_ug RGB_EFF      &ext_power EP_TOG       &none        &none       &none            &kp FSLH          &kp N7           &kp N8     &kp N9    &kp KP_MINUS    &none
-   &kp LCTRL  &none                &none                   &none        &none       &none            &kp KP_ASTERISK   &kp N4           &kp N5     &kp N6    &kp KP_PLUS     &none
-   &kp LSHFT  &none                &none                   &none        &none       &none            &kp N0            &kp N1           &kp N2     &kp N3    &kp RET         &none
-                                                           &kp LGUI     &kp LALT    &kp SPACE        &kp BSPC          &mt SYSTEM N0    &kp KP_DOT
-                        >;
-                };
-
-                misc_layer {
-                        label = "MISC";
-// -----------------------------------------------------------------------------------------
-// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &     |  UP    |  (      |  )  | BKSP |
-// | CTRL |     |     |     |     |     |   |  -  |  LEFT  |  DOWN  |  RIGHT  |  \  |  `   |
-// | SHFT |     |     |     |     |     |   |  _  |  +     |  {     |  }      | "|" |  ~   |
-//                    | GUI |     | SPC |   | RET |        |  ALT   |
-
-                        bindings = <
-   &kp  TAB     &kp EXCL    &kp AT    &kp HASH    &kp DLLR    &kp PRCNT        &kp CARET    &kp AMPS    &kp UP      &kp LPAR     &kp RPAR    &kp BSPC
-   &kp LCTRL    &trans      &trans    &trans      &trans      &trans           &kp MINUS    &kp LEFT    &kp DOWN    &kp RIGHT    &kp BSLH    &kp GRAVE
-   &kp LSHFT    &trans      &trans    &trans      &trans      &trans           &kp UNDER    &kp PLUS    &kp LBRC    &kp RBRC     &kp PIPE    &kp TILDE
-                                      &kp LGUI    &kp RET     &kp SPACE        &kp RET      &kp N0      &kp KP_DOT
-                        >;
-                };
-
-                system_layer {
-                        label = "SYSTEM";
-// ---------------------------------------------------------------------------------------------------
-// |  QWERTY |  COLEMAK  |   2    |     3     |   4   |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-// | USB/BT  |    BT0    | BT_MAC | BT_IPHONE | BT_PC | BT4 |   | LFT | DWN |  UP | RGT |     |      |
-// | SHFT    |           |        |           |       |     |   |     |     |     |     |     |      |
-//                                |    GUI    |       | SPC |   | RET |     | ALT |
-
-                        bindings = <
-   &tog QWERTY     &tog COLEMAK    &none           &kp N3          &kp N4          &kp N5              &kp N6      &kp N7      &kp N8    &kp N9       &kp N0    &kp BSPC
-   &out OUT_TOG    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4        &kp LEFT    &kp DOWN    &kp UP    &kp RIGHT    &trans    &trans
-   &kp LSHFT       &trans          &trans          &trans          &trans          &trans              &trans      &trans      &trans    &trans       &trans    &trans
-                                                   &kp LGUI        &none           &kp SPACE           &kp RET     &none       &kp RALT
-                        >;
-                };
+            bindings = <
+   &kp ESC   &kp Q   &kp W   &kp E   &kp R   &kp T   &kp Y   &kp U      &kp I    &kp O     &kp P    &kp BSPC
+ &kp LCTRL   &kp A   &kp S   &kp D   &kp F   &kp G   &kp H   &kp J      &kp K    &kp L  &kp SEMI     &kp SQT
+ &kp LSHFT   &kp Z   &kp X   &kp C   &kp V   &kp B   &kp N   &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RSHIFT
+                            &trans  &trans  &trans  &trans  &trans     &trans
+            >;
         };
+
+        NUM {
+            label = "NUM";
+
+            // -------------------------------------------------------------------------------
+            // |      |     |     |     |     |     |   |  /  |  7  |  8  |  9  |  -  |      |
+            // | CTRL |     |     |     |     |     |   |  *  |  4  |  5  |  6  |  +  |      |
+            // | SHFT |     |     |     |     |     |   |  0  |  1  |  2  |  3  | RET |      |
+            //                    | GUI |LALT | SPC |   | BSP |?????|  .  |
+
+            bindings = <
+   &kp TAB  &rgb_ug RGB_EFF  &ext_power EP_TOG            &none            &none      &none         &kp FSLH    &kp N7      &kp N8  &kp N9  &kp KP_MINUS   &none
+ &kp LCTRL  &rgb_ug RGB_HUI    &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI      &none  &kp KP_ASTERISK    &kp N4      &kp N5  &kp N6   &kp KP_PLUS   &none
+ &kp LSHFT  &rgb_ug RGB_HUD    &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD      &none           &kp N0    &kp N1      &kp N2  &kp N3       &kp RET   &none
+                                                       &kp LGUI         &kp LALT  &kp SPACE         &kp BSPC  &mt 4 N0  &kp KP_DOT
+            >;
+        };
+
+        MISC {
+            label = "MISC";
+
+            // -----------------------------------------------------------------------------------------
+            // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &     |  UP    |  (      |  )  | BKSP |
+            // | CTRL |     |     |     |     |     |   |  -  |  LEFT  |  DOWN  |  RIGHT  |  \  |  `   |
+            // | SHFT |     |     |     |     |     |   |  _  |  +     |  {     |  }      | "|" |  ~   |
+            //                    | GUI |     | SPC |   | RET |        |  ALT   |
+
+            bindings = <
+   &kp TAB  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT  &kp CARET  &kp AMPS      &kp UP   &kp LPAR  &kp RPAR   &kp BSPC
+ &kp LCTRL    &trans  &trans    &trans    &trans     &trans  &kp MINUS  &kp LEFT    &kp DOWN  &kp RIGHT  &kp BSLH  &kp GRAVE
+ &kp LSHFT    &trans  &trans    &trans    &trans     &trans  &kp UNDER  &kp PLUS    &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
+                              &kp LGUI   &kp RET  &kp SPACE    &kp RET    &kp N0  &kp KP_DOT
+            >;
+        };
+
+        SYSTEM {
+            label = "SYSTEM";
+
+            // ---------------------------------------------------------------------------------------------------
+            // |  QWERTY |  COLEMAK  |   2    |     3     |   4   |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
+            // | USB/BT  |    BT0    | BT_MAC | BT_IPHONE | BT_PC | BT4 |   | LFT | DWN |  UP | RGT |     |      |
+            // | SHFT    |           |        |           |       |     |   |     |     |     |     |     |      |
+            //                                |    GUI    |       | SPC |   | RET |     | ALT |
+
+            bindings = <
+       &tog 0        &tog 1         &none        &kp N3        &kp N4        &kp N5    &kp N6    &kp N7    &kp N8     &kp N9  &kp N0  &kp BSPC
+ &out OUT_TOG  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &kp LEFT  &kp DOWN    &kp UP  &kp RIGHT  &trans    &trans
+    &kp LSHFT        &trans        &trans        &trans        &trans        &trans    &trans    &trans    &trans     &trans  &trans    &trans
+                                               &kp LGUI         &none     &kp SPACE   &kp RET     &none  &kp RALT
+            >;
+        };
+    };
 };
