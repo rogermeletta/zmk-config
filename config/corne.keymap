@@ -104,7 +104,7 @@
 
           // Right-hand combos
           COMBO(RIGHT_BRACE, 19 20)
-          //COMBO(DOUBLE_QUOTES, 7 8)
+          COMBO(DOUBLE_QUOTES, 15 16 19 20)
           COMBO(EQUAL, 6 16)
           COMBO(PIPE, 7 17)
           COMBO(BACKSLASH, 8 18)
