@@ -116,7 +116,7 @@
           COMBO(SINGLE_QUOTE, 15 20)
           COMBO(DOUBLE_QUOTES, 15 16 19 20)
           COMBO(EQUAL, 6 16)
-          COMBO(PIPE, 7 17)
+          COMBO(PIPE, 20 21)
           COMBO(BACKSLASH, 8 18)
           COMBO(MINUS, 17 18)
           COMBO(PLUS, 18 19)
@@ -139,7 +139,7 @@
 //                     | CTRL | CMD | SPACE |   | ESC | SPC  | RET |
                         bindings = <
    &kp ESC      &kp Q    &kp W    &kp F        &kp P           &kp B                 &kp J          &kp L               &kp U        &kp Y      &kp SQT     &kp BSPC
-   &kp TAB      &kp A    &kp R    &kp S        &kp T           &kp G                 &kp M          &kp N               &kp E        &kp I      &kp O       &mt SEMI RET
+   &kp TAB      &kp A    &kp R    &kp S        &kp T           &kp G                 &kp M          &kp N               &kp E        &kp I      &kp O       &kp RET
    &kp LSHFT    &kp Z    &kp X    &kp C        &kp D           &kp V                 &kp K          &kp H               &kp COMMA    &kp DOT    &kp FSLH    &kp RSHIFT
                                   &kp LCTRL    &mt LGUI RET    &lt MISC SPACE        &lt NUM RET    &lt SYSTEM SPACE    &kp RALT
                         >;
@@ -155,7 +155,7 @@
 //                    | GUI | SPC | LWR |   | RSE | RET  | ALT |
                         bindings = <
    &kp ESC      &kp Q    &kp W    &kp E    &kp R    &kp T        &kp Y    &kp U    &kp I        &kp O      &kp P       &kp BSPC
-   &kp LCTRL    &kp A    &kp S    &kp D    &kp F    &kp G        &kp H    &kp J    &kp K        &kp L      &kp SEMI    &kp SQT
+   &kp TAB      &kp A    &kp S    &kp D    &kp F    &kp G        &kp H    &kp J    &kp K        &kp L      &kp SEMI    &kp RET
    &kp LSHFT    &kp Z    &kp X    &kp C    &kp V    &kp B        &kp N    &kp M    &kp COMMA    &kp DOT    &kp FSLH    &kp RSHIFT
                                   &trans   &trans   &trans       &trans   &trans   &trans
                         >;
@@ -170,9 +170,9 @@
 //                    | GUI |LALT | SPC |   | BSP |?????|  .  |
 
                         bindings = <
-             &kp TAB    &rgb_ug RGB_EFF    &ext_power EP_TOG    &none            &none                &none            &kp FSLH           &kp N7      &kp N8  &kp N9  &kp KP_MINUS   &none
-             &kp LCTRL  &rgb_ug RGB_HUI    &rgb_ug RGB_SAI      &rgb_ug RGB_BRI  &rgb_ug RGB_SPI      &none            &kp KP_ASTERISK    &kp N4      &kp N5  &kp N6  &kp KP_PLUS    &none
-             &kp LSHFT  &rgb_ug RGB_HUD    &rgb_ug RGB_SAD      &rgb_ug RGB_BRD  &rgb_ug RGB_SPD      &none            &kp N0             &kp N1      &kp N2  &kp N3  &kp RET        &none
+   &kp TAB    &rgb_ug RGB_EFF    &ext_power EP_TOG    &none            &none                &none            &kp FSLH           &kp N7      &kp N8  &kp N9  &kp KP_MINUS   &none
+   &kp LCTRL  &rgb_ug RGB_HUI    &rgb_ug RGB_SAI      &rgb_ug RGB_BRI  &rgb_ug RGB_SPI      &none            &kp KP_ASTERISK    &kp N4      &kp N5  &kp N6  &kp KP_PLUS    &none
+   &kp LSHFT  &rgb_ug RGB_HUD    &rgb_ug RGB_SAD      &rgb_ug RGB_BRD  &rgb_ug RGB_SPD      &none            &kp N0             &kp N1      &kp N2  &kp N3  &kp RET        &none
                                                                 &kp LGUI         &kp LALT             &kp SPACE        &kp BSPC           &mt 4 N0    &kp KP_DOT
                         >;
                 };
