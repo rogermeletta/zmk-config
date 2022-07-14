@@ -141,16 +141,16 @@
             label = "COLEMAK";
 
             // -------------------------------------------------------------------------------------
-            // |  ESC  |  Q  |  W  |  F   |  P  |  B  |   |  J  |  L   |  U  |  Y  |  '  | BKSP  |
-            // |  TAB  |  A  |  R  |  S   |  T  |  G  |   |  M  |  N   |  E  |  I  |  O  | RET   |
-            // | SHIFT |  Z  |  X  |  C   |  D  |  V  |   |  K  |  H   |  ,  |  .  |  /  | SHIFT |
-            //                     | CTRL | SPC | RET |   | RET | SPC  | ALT |
+            // |  ESC  |  Q  |  W  |    F   |  P  |  B  |   |  J  |  L   |  U  |  Y  |  '  | BKSP  |
+            // |  TAB  |  A  |  R  |    S   |  T  |  G  |   |  M  |  N   |  E  |  I  |  O  | RET   |
+            // | SHIFT |  Z  |  X  |    C   |  D  |  V  |   |  K  |  H   |  ,  |  .  |  /  | SHIFT |
+            //                     | SYSTEM | SPC | RET |   | RET | SPC  | ALT |
 
             bindings = <
-                &kp ESC      &kp Q    &kp W    &kp F       &kp P             &kp B                 &kp J           &kp L               &kp U        &kp Y      &kp SQT     &kp BSPC
-                &kp TAB      &kp A    &kp R    &kp S       &kp T             &kp G                 &kp M           &kp N               &kp E        &kp I      &kp O       &kp RET
-                &kp LSHFT    &kp Z    &kp X    &kp C       &kp D             &kp V                 &kp K           &kp H               &kp COMMA    &kp DOT    &kp FSLH    &kp RSHIFT
-                                               &kp NUM     &mt LGUI SPACE    &lt SYSTEM RET        &lt MISC RET    &lt MISC SPACE      &kp RALT
+                &kp ESC      &kp Q    &kp W    &kp F         &kp P             &kp B                 &kp J           &kp L               &kp U        &kp Y      &kp SQT     &kp BSPC
+                &kp TAB      &kp A    &kp R    &kp S         &kp T             &kp G                 &kp M           &kp N               &kp E        &kp I      &kp O       &kp RET
+                &kp LSHFT    &kp Z    &kp X    &kp C         &kp D             &kp V                 &kp K           &kp H               &kp COMMA    &kp DOT    &kp FSLH    &kp RSHIFT
+                                               &mo SYSTEM    &mt LGUI SPACE    &lt NUM RET           &lt MISC RET    &lt MISC SPACE      &kp RALT
             >;
         };
 
