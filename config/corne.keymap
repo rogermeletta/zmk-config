@@ -63,6 +63,7 @@
     continue-list = <UNDERSCORE MINUS>;
 };
 
+
 // MACROS
 #define U_UNDO  LG(Z)
 #define U_CUT   LG(X)
@@ -83,6 +84,13 @@
 / {
     combos {
         compatible = "zmk,combos";
+
+        // special combo for capital words
+        combo_caps { \
+            timeout-ms = <40>; \
+            key-positions = <24 35>; \
+            bindings = <&caps_word>; \
+        };
 
         // -----------------------------------------------------------------------------------------
         // |   0  |   1  |   2  |   3  |   4  |   5    |   |   6  |   7  |   8  |   9  |  10  |  11  |
@@ -177,7 +185,7 @@
                 &kp LCTRL  &rgb_ug RGB_HUI    &rgb_ug RGB_SAI      &rgb_ug RGB_BRI  &rgb_ug RGB_SPI      &none            &kp KP_ASTERISK    &kp N4      &kp N5  &kp N6  &kp KP_PLUS    &none
                 &kp LSHFT  &rgb_ug RGB_HUD    &rgb_ug RGB_SAD      &rgb_ug RGB_BRD  &rgb_ug RGB_SPD      &none            &kp N0             &kp N1      &kp N2  &kp N3  &kp RET        &none
                                                                    &kp LGUI         &kp LALT             &kp SPACE        &kp BSPC           &mt 4 N0    &kp KP_DOT
-                >;
+            >;
         };
 
         misc_layer {
@@ -207,7 +215,7 @@
             //                                  |           |         |     |   | Previous  |  Play/Pause  | Next |
 
             bindings = <
-                &tog COLEMAK    &non e          &none           &none3          &reset          &bootloader         &none       &none       &none     &none        &none     &kp BSPC
+                &tog COLEMAK    &none           &none           &none3          &reset          &bootloader         &none       &none       &none     &none        &none     &kp BSPC
                 &out OUT_TOG    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4        &none       &none       &none     &none        &none     &none
                 &none           &none           &none           &none           &none           &none               &none       &none       &none     &none        &none     &none
                                                                 &none           &none           &trans              &kp C_PREV  &kp K_PP    &kp C_NEXT
