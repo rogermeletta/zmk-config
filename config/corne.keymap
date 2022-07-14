@@ -142,7 +142,7 @@
                 &kp ESC      &kp Q    &kp W    &kp F       &kp P             &kp B                 &kp J           &kp L               &kp U        &kp Y      &kp SQT     &kp BSPC
                 &kp TAB      &kp A    &kp R    &kp S       &kp T             &kp G                 &kp M           &kp N               &kp E        &kp I      &kp O       &kp RET
                 &kp LSHFT    &kp Z    &kp X    &kp C       &kp D             &kp V                 &kp K           &kp H               &kp COMMA    &kp DOT    &kp FSLH    &kp RSHIFT
-                                               &kp  NUM    &mt LGUI SPACE    &lt SYSTEM RET        &lt MISC RET    &lt MISC SPACE      &kp RALT
+                                               &kp NUM     &mt LGUI SPACE    &lt SYSTEM RET        &lt MISC RET    &lt MISC SPACE      &kp RALT
             >;
         };
 
@@ -207,7 +207,7 @@
             //                                  |           |         |     |   | Previous  |  Play/Pause  | Next |
 
             bindings = <
-                &tog COLEMAK    &knone          &none           &none3          &reset          &bootloader         &none       &none       &none     &none        &none     &kp BSPC
+                &tog COLEMAK    &non e          &none           &none3          &reset          &bootloader         &none       &none       &none     &none        &none     &kp BSPC
                 &out OUT_TOG    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4        &none       &none       &none     &none        &none     &none
                 &none           &none           &none           &none           &none           &none               &none       &none       &none     &none        &none     &none
                                                                 &none           &none           &trans              &kp C_PREV  &kp K_PP    &kp C_NEXT
