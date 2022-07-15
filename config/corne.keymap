@@ -143,6 +143,15 @@
     //     };
     // };
 
+    behaviors {
+        td_caps: tap_caps {
+                 compatible = "zmk,behavior-tap-dance";
+                 label = "Tap shift and caps";
+                 #binding-cells = <0>;
+                 tapping-term-ms = <200>;
+                 bindings = <&kp LSHIFT>, <&caps_word>, <&kp CAPSLOCK>;
+        };
+
 
     keymap {
         compatible = "zmk,keymap";
@@ -159,7 +168,7 @@
             bindings = <
                 &kp TAB      &kp Q    &kp W    &kp F         &kp P             &kp B                 &kp J             &kp L               &kp U        &kp Y      &kp SQT     &kp BSPC
                 &kp ESC      &kp A    &kp R    &kp S         &kp T             &kp G                 &kp M             &kp N               &kp E        &kp I      &kp O       &kp RET
-                &kp LSHFT    &kp Z    &kp X    &kp C         &kp D             &kp V                 &kp K             &kp H               &kp COMMA    &kp DOT    &kp FSLH    &kp RSHIFT
+                &td_caps     &kp Z    &kp X    &kp C         &kp D             &kp V                 &kp K             &kp H               &kp COMMA    &kp DOT    &kp FSLH    &kp RSHIFT
                                                &kp LCTRL     &mt LGUI SPACE    &lt NUM RET           &lt SYSTEM RET    &lt MISC SPACE    &mt RALT BSPC
             >;
         };
@@ -176,7 +185,7 @@
             bindings = <
                 &kp TAB      &kp Q    &kp W    &kp E    &kp R    &kp T        &kp Y    &kp U    &kp I        &kp O      &kp P       &kp BSPC
                 &kp ESC      &kp A    &kp S    &kp D    &kp F    &kp G        &kp H    &kp J    &kp K        &kp L      &kp SEMI    &kp RET
-                &kp LSHFT    &kp Z    &kp X    &kp C    &kp V    &kp B        &kp N    &kp M    &kp COMMA    &kp DOT    &kp FSLH    &kp RSHIFT
+                &td_caps     &kp Z    &kp X    &kp C    &kp V    &kp B        &kp N    &kp M    &kp COMMA    &kp DOT    &kp FSLH    &kp RSHIFT
                                               &trans   &trans   &trans       &trans   &trans   &trans
             >;
         };
