@@ -135,13 +135,13 @@
     };
 
 
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        tri_layer {
-            if-layers = <NUM MISC>;
-            then-layer = <SYSTEM>;
-        };
-    };
+    // conditional_layers {
+    //     compatible = "zmk,conditional-layers";
+    //     tri_layer {
+    //         if-layers = <NUM MISC>;
+    //         then-layer = <SYSTEM>;
+    //     };
+    // };
 
 
     keymap {
@@ -160,7 +160,7 @@
                 &kp ESC      &kp Q    &kp W    &kp F         &kp P             &kp B                 &kp J           &kp L               &kp U        &kp Y      &kp SQT     &kp BSPC
                 &kp TAB      &kp A    &kp R    &kp S         &kp T             &kp G                 &kp M           &kp N               &kp E        &kp I      &kp O       &kp RET
                 &kp LSHFT    &kp Z    &kp X    &kp C         &kp D             &kp V                 &kp K           &kp H               &kp COMMA    &kp DOT    &kp FSLH    &kp RSHIFT
-                                               &kp LCTRL     &mt LGUI SPACE    &lt NUM RET           &lt MISC RET    &lt MISC SPACE      &mt RALT BSPC
+                                               &kp LCTRL     &mt LGUI SPACE    &lt NUM RET           &lt MISC RET    &lt SYSTEM SPACE    &mt RALT BSPC
             >;
         };
 
