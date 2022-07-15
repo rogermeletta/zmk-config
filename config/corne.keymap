@@ -151,14 +151,14 @@
             label = "COLEMAK";
 
             // -------------------------------------------------------------------------------------
-            // |  ESC  |  Q  |  W  |    F   |  P  |  B  |   |  J  |  L   |  U  |  Y  |  '  | BKSP  |
-            // |  TAB  |  A  |  R  |    S   |  T  |  G  |   |  M  |  N   |  E  |  I  |  O  | RET   |
+            // |  TAB  |  Q  |  W  |    F   |  P  |  B  |   |  J  |  L   |  U  |  Y  |  '  | BKSP  |
+            // |  ESC  |  A  |  R  |    S   |  T  |  G  |   |  M  |  N   |  E  |  I  |  O  | RET   |
             // | SHIFT |  Z  |  X  |    C   |  D  |  V  |   |  K  |  H   |  ,  |  .  |  /  | SHIFT |
             //                     |  CTRL  | SPC | RET |   | RET | SPC  | ALT |
 
             bindings = <
-                &kp ESC      &kp Q    &kp W    &kp F         &kp P             &kp B                 &kp J             &kp L               &kp U        &kp Y      &kp SQT     &kp BSPC
-                &kp TAB      &kp A    &kp R    &kp S         &kp T             &kp G                 &kp M             &kp N               &kp E        &kp I      &kp O       &kp RET
+                &kp TAB      &kp Q    &kp W    &kp F         &kp P             &kp B                 &kp J             &kp L               &kp U        &kp Y      &kp SQT     &kp BSPC
+                &kp ESC      &kp A    &kp R    &kp S         &kp T             &kp G                 &kp M             &kp N               &kp E        &kp I      &kp O       &kp RET
                 &kp LSHFT    &kp Z    &kp X    &kp C         &kp D             &kp V                 &kp K             &kp H               &kp COMMA    &kp DOT    &kp FSLH    &kp RSHIFT
                                                &kp LCTRL     &mt LGUI SPACE    &lt NUM RET           &lt SYSTEM RET    &lt MISC SPACE    &mt RALT BSPC
             >;
@@ -168,14 +168,14 @@
             label = "QWERTY";
 
             // -----------------------------------------------------------------------------------
-            // |  ESC |  Q  |  W  |  E   |  R  |  T    |   |  Y  |  U  |  I  |  O  |  P  |  BKSP   |
-            // | TAB  |  A  |  S  |  D   |  F  |  G    |   |  H  |  J  |  K  |  L  |  ;  |  RET    |
+            // | TAB  |  Q  |  W  |  E   |  R  |  T    |   |  Y  |  U  |  I  |  O  |  P  |  BKSP   |
+            // | ESC  |  A  |  S  |  D   |  F  |  G    |   |  H  |  J  |  K  |  L  |  ;  |  RET    |
             // | SHFT |  Z  |  X  |  C   |  V  |  B    |   |  N  |  M  |  ,  |  .  |  /  |  SHIFT  |
             //                    | CTRL | CMD | SPC   |   | RET | SPC | ALT |
 
             bindings = <
-                &kp ESC      &kp Q    &kp W    &kp E    &kp R    &kp T        &kp Y    &kp U    &kp I        &kp O      &kp P       &kp BSPC
-                &kp TAB      &kp A    &kp S    &kp D    &kp F    &kp G        &kp H    &kp J    &kp K        &kp L      &kp SEMI    &kp RET
+                &kp TAB      &kp Q    &kp W    &kp E    &kp R    &kp T        &kp Y    &kp U    &kp I        &kp O      &kp P       &kp BSPC
+                &kp ESC      &kp A    &kp S    &kp D    &kp F    &kp G        &kp H    &kp J    &kp K        &kp L      &kp SEMI    &kp RET
                 &kp LSHFT    &kp Z    &kp X    &kp C    &kp V    &kp B        &kp N    &kp M    &kp COMMA    &kp DOT    &kp FSLH    &kp RSHIFT
                                               &trans   &trans   &trans       &trans   &trans   &trans
             >;
