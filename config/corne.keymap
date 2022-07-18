@@ -83,6 +83,11 @@
             sensors = <&left_encoder>;
     };
 };
+
+&left_encoder {
+    status = "okay";
+};
+
 /*
  * Temporarily here because nice nano v2 spi is not defined on ZMk YET
  */
