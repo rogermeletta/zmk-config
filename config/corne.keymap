@@ -249,7 +249,7 @@
 
         misc_layer {
             label = "MISC";
-            sensor-bindings = <&inc_dec_kp C_AC_SCROLL_DOWN C_AC_SCROLL_UP>;
+            sensor-bindings = <&inc_dec_kp K_SCROLL_DOWN C_AC_SCROLL_UP>;
 
             // -----------------------------------------------------------------------------------------
             // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  HOME  |  UP    |  END    |  )  | BKSP |
@@ -267,7 +267,7 @@
 
         system_layer {
             label = "SYSTEM";
-            sensor-bindings = <&inc_dec_kp C_AC_BACK C_AC_FORWARD>;
+            sensor-bindings = <&inc_dec_kp K_BACK C_AC_FORWARD>;
 
             // ------------------------------------------------------------------------------------------------------------------------
             // |  COLEMAK |         |           |         |         |     |   |           |              |      |      |     | BKSP |
