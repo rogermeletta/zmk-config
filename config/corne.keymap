@@ -90,6 +90,18 @@
     status = "okay";
 };
 
+// add mouse support for pimoroni trackball
+pro_micro_i2c {
+    status = "okay";
+
+    trackball_pim447@a {
+        compatible = "pimoroni,trackball_pim447";
+        reg = <0xa>;
+        label = "TRACKBALL_PIM447";
+    };
+};
+
+
 /*
  * Temporarily here because nice nano v2 spi is not defined on ZMk YET
  */
@@ -231,7 +243,7 @@
 
         num_layer {
             label = "NUM";
-            sensor-bindings = <&inc_dec_kp C_PREV C_NEXT>;
+            sensor-bindings = <&inc_dec_kp K_BACK C_AC_FORWARD>;
 
             // -------------------------------------------------------------------------------
             // |      |     |     |     |     |     |   |  /  |  7  |  8  |  9  |  -  |      |
@@ -267,7 +279,7 @@
 
         system_layer {
             label = "SYSTEM";
-            sensor-bindings = <&inc_dec_kp K_BACK C_AC_FORWARD>;
+            sensor-bindings = <&inc_dec_kp C_PREV C_NEXT>;
 
             // ------------------------------------------------------------------------------------------------------------------------
             // |  COLEMAK |         |           |         |         |     |   |           |              |      |      |     | BKSP |
