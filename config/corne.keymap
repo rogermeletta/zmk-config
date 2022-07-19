@@ -7,8 +7,8 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/led/led.h>
-#include <dt-bindings/zmk/rgb.h>
+// #include <dt-bindings/led/led.h>
+// #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/matrix_transform.h>
@@ -242,9 +242,9 @@
             //                    | GUI |LALT | SPC |   | RET |  0  |  .  |
 
             bindings = <
-                &kp TAB      &rgb_ug RGB_EFF    &ext_power EP_TOG    &none            &none                &none            &kp FSLH           &kp N7    &kp N8     &kp N9    &kp KP_MINUS    &none
-                &kp LCTRL    &rgb_ug RGB_HUI    &rgb_ug RGB_SAI      &rgb_ug RGB_BRI  &rgb_ug RGB_SPI      &none            &kp KP_ASTERISK    &kp N4    &kp N5     &kp N6    &kp KP_PLUS     &none
-                &kp LSHFT    &rgb_ug RGB_HUD    &rgb_ug RGB_SAD      &rgb_ug RGB_BRD  &rgb_ug RGB_SPD      &none            &kp N0             &kp N1    &kp N2     &kp N3    &kp RET         &none
+                &kp TAB      &none    &ext_power EP_TOG    &none            &none                &none            &kp FSLH           &kp N7    &kp N8     &kp N9    &kp KP_MINUS    &none
+                &kp LCTRL    &none    &none      &none  &none      &none            &kp KP_ASTERISK    &kp N4    &kp N5     &kp N6    &kp KP_PLUS     &none
+                &kp LSHFT    &none    &none      &none  &none      &none            &kp N0             &kp N1    &kp N2     &kp N3    &kp RET         &none
                                                 &trans               &kp LGUI         &kp LALT             &kp SPACE        &kp RET            &kp N0    &kp KP_DOT &trans
             >;
         };
