@@ -92,6 +92,32 @@
     status = "okay";
 };
 
+&i2c0 {
+    compatible = "nordic,nrf-twi";
+    status = "okay";
+    sda-pin = <5>;
+    scl-pin = <4>;
+    reg = <0x40003000 0x1000>;
+    interrupts = <3 NRF_DEFAULT_IRQ_PRIORITY>;
+    label = "I2C_0";
+    clock-frequency = <I2C_BITRATE_STANDARD>; // 100kHz (to avoid clock stretching, PIM447 clk <= 250kHz)
+
+    trackball_pim447@a {
+        compatible = "pimoroni,trackball_pim447";
+        reg = <0xa>;
+        label = "TRACKBALL_PIM447";
+
+        move-factor = <1>;      // Increase pointer velocity (default: 1)
+        //invert-move-x;        // Invert pointer X axis (left is right, and vice versa)
+        //invert-move-y;        // Invert pointer Y axis (up is down, and vice versa)
+        button = <0>;           // Send right-click when pressing the ball (default: 0, ie. left-click)
+        scroll-divisor = <2>;   // Increase wheel velocity (default: 2)
+        //invert-scroll-x;      // Invert wheel X axis (left is right, and vice versa)
+        //invert-scroll-y;      // Invert wheel Y axis (up is down, and vice versa)
+        mode = <PIM447_MOVE>;   // Act as pointer at startup (default: PIM447_SCROLL for mouse scroll)
+    };
+};
+
 
 /*
  * Temporarily here because nice nano v2 spi is not defined on ZMk YET
