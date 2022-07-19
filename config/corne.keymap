@@ -97,11 +97,11 @@
  * Temporarily here because nice nano v2 spi is not defined on ZMk YET
  */
 
-/*
- * &caps_word {
- *   continue-list = <UNDERSCORE MINUS>;
- * };
- */
+
+// &caps_word {
+//   continue-list = <UNDERSCORE MINUS>;
+// };
+
 
 
 // MACROS
@@ -126,11 +126,11 @@
         compatible = "zmk,combos";
 
         // special combo for capital words
-        combo_caps { \
-            timeout-ms = <40>; \
-            key-positions = <24 35>; \
-            bindings = <&caps_word>; \
-        };
+        // combo_caps { \
+        //     timeout-ms = <40>; \
+        //     key-positions = <24 35>; \
+        //     bindings = <&caps_word>; \
+        // };
 
         //  ------------------------------------------------------------------------------------------
         //  |   0  |   1  |   2  |   3  |   4  |   5  |    |   6  |   7  |   8  |   9  |  10  |  11  |
@@ -183,15 +183,15 @@
     //     };
     // };
 
-    behaviors {
-        td_caps: tap_caps {
-                 compatible = "zmk,behavior-tap-dance";
-                 label = "Tap shift and caps";
-                 #binding-cells = <0>;
-                 tapping-term-ms = <200>;
-                 bindings = <&kp LSHIFT>, <&caps_word>, <&kp CAPSLOCK>;
-        };
-    };
+    // behaviors {
+    //     td_caps: tap_caps {
+    //              compatible = "zmk,behavior-tap-dance";
+    //              label = "Tap shift and caps";
+    //              #binding-cells = <0>;
+    //              tapping-term-ms = <200>;
+    //              bindings = <&kp LSHIFT>, <&caps_word>, <&kp CAPSLOCK>;
+    //     };
+    // };
 
 
     keymap {
@@ -211,7 +211,7 @@
             bindings = <
                 &kp TAB      &kp Q    &kp W       &kp F         &kp P             &kp B                 &kp J             &kp L               &kp U          &kp Y      &kp SQT     &kp BSPC
                 &kp ESC      &kp A    &kp R       &kp S         &kp T             &kp G                 &kp M             &kp N               &kp E          &kp I      &kp O       &kp RET
-                &td_caps     &kp Z    &kp X       &kp C         &kp D             &kp V                 &kp K             &kp H               &kp COMMA      &kp DOT    &kp FSLH    &kp RSHIFT
+                &LSHIFT      &kp Z    &kp X       &kp C         &kp D             &kp V                 &kp K             &kp H               &kp COMMA      &kp DOT    &kp FSLH    &kp RSHIFT
                                       &kp C_PP    &kp LCTRL     &mt LGUI SPACE    &lt NUM RET           &lt SYSTEM RET    &lt MISC SPACE      &lt MOUSE BSPC  &none
             >;
         };
@@ -228,7 +228,7 @@
             bindings = <
                 &kp TAB      &kp Q    &kp W    &kp E    &kp R    &kp T        &kp Y    &kp U    &kp I        &kp O      &kp P       &kp BSPC
                 &kp ESC      &kp A    &kp S    &kp D    &kp F    &kp G        &kp H    &kp J    &kp K        &kp L      &kp SEMI    &kp RET
-                &td_caps     &kp Z    &kp X    &kp C    &kp V    &kp B        &kp N    &kp M    &kp COMMA    &kp DOT    &kp FSLH    &kp RSHIFT
+                &LSHIFT      &kp Z    &kp X    &kp C    &kp V    &kp B        &kp N    &kp M    &kp COMMA    &kp DOT    &kp FSLH    &kp RSHIFT
                                       &trans   &trans   &trans   &trans       &trans   &trans   &trans       &trans
             >;
         };
