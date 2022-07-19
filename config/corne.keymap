@@ -12,7 +12,6 @@
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/matrix_transform.h>
-#include <dt-bindings/zmk/mouse.h>
 // #include <dt-bindings/zmk/backlight.h>
 
 #define QWERTY   0
@@ -27,33 +26,33 @@
  * GitHub Issue: https://github.com/zmkfirmware/zmk/issues/885
  */
 
-// &spi1 {
-//     compatible = "nordic,nrf-spim";
-//     status = "okay";
-//     mosi-pin = <6>;
-//     // Unused pins, needed for SPI definition, but not used by the ws2812 driver itself.
-//     sck-pin = <5>;
-//     miso-pin = <7>;
+&spi1 {
+    compatible = "nordic,nrf-spim";
+    status = "okay";
+    mosi-pin = <6>;
+    // Unused pins, needed for SPI definition, but not used by the ws2812 driver itself.
+    sck-pin = <5>;
+    miso-pin = <7>;
 
-//     led_strip: ws2812@0 {
-//         compatible = "worldsemi,ws2812-spi";
-//         label = "WS2812";
+    led_strip: ws2812@0 {
+        compatible = "worldsemi,ws2812-spi";
+        label = "WS2812";
 
-//         /* SPI */
-//         reg = <0>; /* ignored, but necessary for SPI bindings */
-//         spi-max-frequency = <4000000>;
+        /* SPI */
+        reg = <0>; /* ignored, but necessary for SPI bindings */
+        spi-max-frequency = <4000000>;
 
-//         /* WS2812 */
-//         chain-length = <27>; /* arbitrary; change at will */
-//         spi-one-frame = <0x70>;
-//         spi-zero-frame = <0x40>;
-//         color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
-//     };
-// };
+        /* WS2812 */
+        chain-length = <27>; /* arbitrary; change at will */
+        spi-one-frame = <0x70>;
+        spi-zero-frame = <0x40>;
+        color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
+    };
+};
 
 / {
     chosen {
-        // zmk,underglow = &led_strip;
+        zmk,underglow = &led_strip;
         zmk,matrix_transform = &default_transform;
     };
 
@@ -123,11 +122,11 @@
         compatible = "zmk,combos";
 
         // special combo for capital words
-        // combo_caps { \
-        //     timeout-ms = <40>; \
-        //     key-positions = <24 35>; \
-        //     bindings = <&caps_word>; \
-        // };
+        combo_caps { \
+            timeout-ms = <40>; \
+            key-positions = <24 35>; \
+            bindings = <&caps_word>; \
+        };
 
         //  ------------------------------------------------------------------------------------------
         //  |   0  |   1  |   2  |   3  |   4  |   5  |    |   6  |   7  |   8  |   9  |  10  |  11  |
@@ -180,15 +179,15 @@
     //     };
     // };
 
-    // behaviors {
-    //     td_caps: tap_caps {
-    //              compatible = "zmk,behavior-tap-dance";
-    //              label = "Tap shift and caps";
-    //              #binding-cells = <0>;
-    //              tapping-term-ms = <200>;
-    //              bindings = <&kp LSHIFT>, <&caps_word>, <&kp CAPSLOCK>;
-    //     };
-    // };
+    behaviors {
+        td_caps: tap_caps {
+                 compatible = "zmk,behavior-tap-dance";
+                 label = "Tap shift and caps";
+                 #binding-cells = <0>;
+                 tapping-term-ms = <200>;
+                 bindings = <&kp LSHIFT>, <&caps_word>, <&kp CAPSLOCK>;
+        };
+    };
 
 
     keymap {
@@ -208,7 +207,7 @@
             bindings = <
                 &kp TAB      &kp Q    &kp W       &kp F         &kp P             &kp B                 &kp J             &kp L               &kp U          &kp Y      &kp SQT     &kp BSPC
                 &kp ESC      &kp A    &kp R       &kp S         &kp T             &kp G                 &kp M             &kp N               &kp E          &kp I      &kp O       &kp RET
-                &none        &kp Z    &kp X       &kp C         &kp D             &kp V                 &kp K             &kp H               &kp COMMA      &kp DOT    &kp FSLH    &kp RSHIFT
+                &td_caps     &kp Z    &kp X       &kp C         &kp D             &kp V                 &kp K             &kp H               &kp COMMA      &kp DOT    &kp FSLH    &kp RSHIFT
                                       &kp C_PP    &kp LCTRL     &mt LGUI SPACE    &lt NUM RET           &lt SYSTEM RET    &lt MISC SPACE      &mt RALT BSPC  &none
             >;
         };
@@ -225,7 +224,7 @@
             bindings = <
                 &kp TAB      &kp Q    &kp W    &kp E    &kp R    &kp T        &kp Y    &kp U    &kp I        &kp O      &kp P       &kp BSPC
                 &kp ESC      &kp A    &kp S    &kp D    &kp F    &kp G        &kp H    &kp J    &kp K        &kp L      &kp SEMI    &kp RET
-                &none        &kp Z    &kp X    &kp C    &kp V    &kp B        &kp N    &kp M    &kp COMMA    &kp DOT    &kp FSLH    &kp RSHIFT
+                &td_caps     &kp Z    &kp X    &kp C    &kp V    &kp B        &kp N    &kp M    &kp COMMA    &kp DOT    &kp FSLH    &kp RSHIFT
                                       &trans   &trans   &trans   &trans       &trans   &trans   &trans       &trans
             >;
         };
@@ -278,8 +277,8 @@
 
             bindings = <
                 &tog COLEMAK    &none           &none           &none           &reset          &bootloader         &none       &none       &none      &none        &none     &kp BSPC
-                &out OUT_TOG    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4        &mmv MOVE_UP       &none       &none      &none        &none     &none
-                &none           &none           &none           &none           &none           &none               &mwh SCROLL_UP       &none       &none      &none        &none     &none
+                &out OUT_TOG    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4        &none       &none       &none      &none        &none     &none
+                &none           &none           &none           &none           &none           &none               &none       &none       &none      &none        &none     &none
                                                 &trans          &none           &none           &trans              &kp C_PREV  &kp C_PP    &kp C_NEXT &trans
             >;
         };
