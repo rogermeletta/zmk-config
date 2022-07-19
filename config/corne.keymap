@@ -12,6 +12,8 @@
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/matrix_transform.h>
+#include <dt-bindings/zmk/mouse.h>
+
 // #include <dt-bindings/zmk/backlight.h>
 
 #define QWERTY   0
@@ -249,7 +251,7 @@
 
         misc_layer {
             label = "MISC";
-            sensor-bindings = <&inc_dec_kp K_SCROLL_DOWN C_AC_SCROLL_UP>;
+            sensor-bindings = <&inc_dec_kp K_SCROLL_DOWN &mmv MOVE_VERT(2048)>;
 
             // -----------------------------------------------------------------------------------------
             // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  HOME  |  UP    |  END    |  )  | BKSP |
