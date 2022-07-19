@@ -74,23 +74,23 @@
         >;
     };
 
-    left_encoder: encoder_left {
-        compatible = "alps,ec11";
-        label = "LEFT_ENCODER";
-        a-gpios = <&pro_micro_d  9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        b-gpios = <&pro_micro_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        resolution = <4>;
-        };
+    // left_encoder: encoder_left {
+    //     compatible = "alps,ec11";
+    //     label = "LEFT_ENCODER";
+    //     a-gpios = <&pro_micro_d  9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    //     b-gpios = <&pro_micro_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    //     resolution = <4>;
+    //     };
 
-        sensors {
-            compatible = "zmk,keymap-sensors";
-            sensors = <&left_encoder>;
-    };
+    //     sensors {
+    //         compatible = "zmk,keymap-sensors";
+    //         sensors = <&left_encoder>;
+    // };
 };
 
-&left_encoder {
-    status = "okay";
-};
+// &left_encoder {
+//     status = "okay";
+// };
 
 
 &pro_micro_i2c {
@@ -214,7 +214,7 @@
 
         colmak_layer {
             label = "COLEMAK";
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+            // sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 
 
             // ---------------------------------------------------------------------------------
@@ -250,7 +250,7 @@
 
         num_layer {
             label = "NUM";
-            sensor-bindings = <&inc_dec_kp C_PREV C_NEXT>;
+            // sensor-bindings = <&inc_dec_kp C_PREV C_NEXT>;
 
             // -------------------------------------------------------------------------------
             // |      |     |     |     |     |     |   |  /  |  7  |  8  |  9  |  -  |      |
@@ -268,7 +268,7 @@
 
         misc_layer {
             label = "MISC";
-            sensor-bindings = <&inc_dec_kp K_SCROLL_DOWN &mmv MOVE_VERT(2048)>;
+            // sensor-bindings = <&inc_dec_kp K_SCROLL_DOWN &mmv MOVE_VERT(2048)>;
 
             // -----------------------------------------------------------------------------------------
             // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  HOME  |  UP    |  END    |  )  | BKSP |
@@ -286,7 +286,7 @@
 
         system_layer {
             label = "SYSTEM";
-            sensor-bindings = <&inc_dec_kp K_BACK C_AC_FORWARD>;
+            // sensor-bindings = <&inc_dec_kp K_BACK C_AC_FORWARD>;
 
             // ------------------------------------------------------------------------------------------------------------------------
             // |  COLEMAK |         |           |         |         |     |   |           |              |      |      |     | BKSP |
