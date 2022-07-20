@@ -21,7 +21,7 @@
 #define MISC     3
 #define SYSTEM   4
 #define FAST     5
-#define SLOW     5
+#define SLOW     6
 
 /*
  * Temporarily here because nice nano v2 spi is not defined on ZMk Yet
@@ -347,7 +347,7 @@
                 &tog COLEMAK    &none           &none           &none           &reset          &bootloader         &none       &mkp LCLK           &mmv F_MOVE_UP      &mkp RCLK            &none     &kp BSPC
                 &out OUT_TOG    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4        &none       &mmv F_MOVE_LEFT    &mmv F_MOVE_DOWN    &mmv F_MOVE_RIGHT    &none     &none
                 &none           &none           &none           &none           &none           &none               &none       &none               &none               &none                &none     &none
-                                                &trans          &kp C_PREV      &kp C_PP        &kp C_NEXT          &mkp LCLK   &mkp RCLK         &mkp MCLK         &none
+                                                &trans          &kp C_PREV      &kp C_PP        &kp C_NEXT          &mkp LCLK   &mkp RCLK           &mkp MCLK           &none
             >;
         };
 
@@ -366,7 +366,7 @@
                 &tog COLEMAK    &none           &none           &none           &reset          &bootloader         &none       &mkp LCLK           &mmv S_MOVE_UP      &mkp RCLK            &none     &kp BSPC
                 &out OUT_TOG    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4        &none       &mmv S_MOVE_LEFT    &mmv S_MOVE_DOWN    &mmv S_MOVE_RIGHT    &none     &none
                 &none           &none           &none           &none           &none           &none               &none       &none               &none               &none                &none     &none
-                                                &trans          &kp C_PREV      &kp C_PP        &kp C_NEXT          &mkp LCLK   &mkp RCLK         &mkp MCLK         &none
+                                                &trans          &kp C_PREV      &kp C_PP        &kp C_NEXT          &mkp LCLK   &mkp RCLK           &mkp MCLK           &none
             >;
         };
     };
