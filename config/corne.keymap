@@ -132,7 +132,7 @@
 / {
     combos {
         compatible = "zmk,combos";
-
+        layers = <QWERTY COLEMAK NUM>
         // special combo for capital words
         combo_caps { \
             timeout-ms = <40>; \
