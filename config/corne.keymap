@@ -209,7 +209,7 @@
                 &kp TAB      &kp Q    &kp W       &kp F         &kp P             &kp B                 &kp J             &kp L               &kp U          &kp Y      &kp SQT     &kp BSPC
                 &kp ESC      &kp A    &kp R       &kp S         &kp T             &kp G                 &kp M             &kp N               &kp E          &kp I      &kp O       &kp RET
                 &td_caps     &kp Z    &kp X       &kp C         &kp D             &kp V                 &kp K             &kp H               &kp COMMA      &kp DOT    &kp FSLH    &kp RSHIFT
-                                      &kp C_PP    &kp LCTRL     &mt LGUI SPACE    &lt NUM RET           &lt SYSTEM RET    &lt MISC SPACE      &mt RALT BSPC  &none
+                                      &kp C_PP    &kp LCTRL     &lt NUM SPACE     &lt SYSTEM RET        &lt SYSTEM RET    &lt MISC SPACE      &mt RALT BSPC  &none
             >;
         };
 
@@ -268,7 +268,7 @@
 
         system_layer {
             label = "SYSTEM";
-            sensor-bindings = <&inc_dec_kp K_BACK C_AC_FORWARD>;
+            sensor-bindings = <&inc_dec_mwh SCROLL_DOWN SCROLL_UP>;
 
             // ------------------------------------------------------------------------------------------------------------------------
             // |  COLEMAK |         |           |         |         |     |   |           |              |      |      |     | BKSP |
@@ -277,10 +277,10 @@
             //                                  |         |         |     |   | Previous  |  Play/Pause  | Next |
 
             bindings = <
-                &tog COLEMAK    &none           &none           &none           &reset          &bootloader         &none       &none       &none      &none        &none     &kp BSPC
-                &out OUT_TOG    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4        &none       &none       &none      &none        &none     &none
-                &none           &none           &none           &none           &none           &none               &mmv MOVE_UP       &mwh SCROLL_UP       &none      &none        &none     &none
-                                                &trans          &none           &none           &trans              &kp C_PREV  &kp C_PP    &kp C_NEXT &trans
+                &tog COLEMAK    &none           &none           &none           &reset          &bootloader         &none       &none             &mmv MOVE_UP      &none              &none     &kp BSPC
+                &out OUT_TOG    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4        &none       &mmv MOVE_LEFT    &mmv MOVE_DOWN    &mmv MOVE_RIGHT    &none     &none
+                &none           &none           &none           &none           &none           &none               &none       &none             &none             &none              &none     &none
+                                                &trans          &none           &none           &trans              &kp C_PREV  &kp C_PP          &kp C_NEXT        &trans
             >;
         };
     };
