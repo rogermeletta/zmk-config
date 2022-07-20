@@ -138,6 +138,7 @@
     combos {
         compatible = "zmk,combos";
         layers = <0 1 2>;
+
         // special combo for capital words
         combo_caps { \
             timeout-ms = <40>; \
@@ -307,10 +308,10 @@
                 &tog COLEMAK    &none           &none           &none           &reset          &bootloader         &none       &mkp LCLK         &mmv MOVE_UP      &mkp RCLK          &none     &kp BSPC
                 &out OUT_TOG    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4        &none       &mmv MOVE_LEFT    &mmv MOVE_DOWN    &mmv MOVE_RIGHT    &none     &none
                 &none           &none           &none           &none           &none           &none               &none       &none             &none             &none              &none     &none
-                                                &trans          &kp C_PREV      &kp C_PP        &kp C_NEXT          &kp C_PREV  &kp C_PP          &kp C_NEXT        &none
+                                                &trans          &kp C_PREV      &kp C_PP        &kp C_NEXT          &mkp LCLK   &mkp MCLK         &mkp RCLK         &none
             >;
         };
-        system_layer {
+        media_layer {
             label = "MEDIA";
             sensor-bindings = <&inc_dec_kp PGDN PGUP>;
 
