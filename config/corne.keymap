@@ -126,6 +126,21 @@
 #define U_SHOT    LS(LG(N4))
 #define U_ALFRED  LG(SPACE)
 
+
+/* Mouse move behavior */
+#define MOVE_VERT(vert) ((vert)&0xFFFF)
+#define MOVE_VERT_DECODE(encoded) (int16_t)((encoded)&0x0000FFFF)
+#define MOVE_HOR(hor) (((hor)&0xFFFF) << 16)
+#define MOVE_HOR_DECODE(encoded) (int16_t)(((encoded)&0xFFFF0000) >> 16)
+
+#define MOVE(hor, vert) (MOVE_HOR(hor) + MOVE_VERT(vert))
+
+#define F_MOVE_UP MOVE_VERT(-600)
+#define F_MOVE_DOWN MOVE_VERT(600)
+#define F_MOVE_LEFT MOVE_HOR(-600)
+#define F_MOVE_RIGHT MOVE_HOR(600)
+
+
 // CONFIGURATION
 #define COMBO(NAME, KEYPOS) \
     combo_##NAME { \
@@ -298,23 +313,24 @@
             label = "SYSTEM";
             sensor-bindings = <&inc_dec_kp U_UNDO U_REDO>;
 
-            // ------------------------------------------------------------------------------------------------------------------------
-            // |  COLEMAK |         |           |         |         |     |   |           |              |      |      |     | BKSP |
-            // |  USB/BT  |  BT_MAC | BT_iPhone |  BT_PC  | BT_iPad | BT4 |   |           |              |      |      |     |      |
-            // |          |         |           |         |         |     |   |           |              |      |      |     |      |
-            //                                  |         |         |     |   | Previous  |  Play/Pause  | Next |
+            // -----------------------------------------------------------------------------------------------------------------------------
+            // |  COLEMAK/QWERTY |         |           |         |         |     |   |           |              |      |      |     | BKSP |
+            // |      USB/BT     |  BT_MAC | BT_iPhone |  BT_PC  | BT_iPad | BT4 |   |           |              |      |      |     |      |
+            // |                 |         |           |         |         |     |   |           |              |      |      |     |      |
+            //                                         |         |         |     |   | Previous  |  Play/Pause  | Next |
 
             bindings = <
                 &tog COLEMAK    &none           &none           &none           &reset          &bootloader         &none       &mkp LCLK         &mmv MOVE_UP      &mkp RCLK          &none     &kp BSPC
                 &out OUT_TOG    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4        &none       &mmv MOVE_LEFT    &mmv MOVE_DOWN    &mmv MOVE_RIGHT    &none     &none
                 &none           &none           &none           &none           &none           &none               &none       &none             &none             &none              &none     &none
-                                                &trans          &kp C_PREV      &kp C_PP        &kp C_NEXT          &mkp LCLK   &mkp MCLK         &mkp RCLK         &none
+                                                &trans          &kp C_PREV      &kp C_PP        &kp C_NEXT          &mkp LCLK   &mkp RCLK         &mkp MCLK         &none
             >;
         };
         media_layer {
             label = "MEDIA";
             sensor-bindings = <&inc_dec_kp PGDN PGUP>;
 
+
             // ------------------------------------------------------------------------------------------------------------------------
             // |  COLEMAK |         |           |         |         |     |   |           |              |      |      |     | BKSP |
             // |  USB/BT  |  BT_MAC | BT_iPhone |  BT_PC  | BT_iPad | BT4 |   |           |              |      |      |     |      |
@@ -322,10 +338,10 @@
             //                                  |         |         |     |   | Previous  |  Play/Pause  | Next |
 
             bindings = <
-                &tog COLEMAK    &none           &none           &none           &reset          &bootloader         &none       &mkp LCLK         &mmv MOVE_UP      &mkp RCLK          &none     &kp BSPC
-                &out OUT_TOG    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4        &none       &mmv MOVE_LEFT    &mmv MOVE_DOWN    &mmv MOVE_RIGHT    &none     &none
-                &none           &none           &none           &none           &none           &none               &none       &none             &none             &none              &none     &none
-                                                &trans          &none           &none           &none               &kp C_PREV  &kp C_PP          &kp C_NEXT        &none
+                &tog COLEMAK    &none           &none           &none           &reset          &bootloader         &none       &mkp LCLK           &mmv F_MOVE_UP      &mkp RCLK            &none     &kp BSPC
+                &out OUT_TOG    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4        &none       &mmv F_MOVE_LEFT    &mmv F_MOVE_DOWN    &mmv F_MOVE_RIGHT    &none     &none
+                &none           &none           &none           &none           &none           &none               &none       &none               &none               &none                &none     &none
+                                                &trans          &kp C_PREV      &kp C_PP        &kp C_NEXT          &mkp LCLK   &mkp RCLK         &mkp MCLK         &none
             >;
         };
 
