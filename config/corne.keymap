@@ -20,6 +20,7 @@
 #define NUM      2
 #define MISC     3
 #define SYSTEM   4
+#define MEDIA    5
 
 /*
  * Temporarily here because nice nano v2 spi is not defined on ZMk Yet
@@ -234,7 +235,7 @@
                 &kp TAB      &kp Q         &kp W         &kp F            &kp P            &kp B                 &kp J             &kp L              &kp U            &kp Y         &kp SQT       &kp BSPC
                 &kp ESC      &hm LGUI A    &hm LALT R    &hm LCTRL S      &hm LSHFT T      &kp G                 &kp M             &hm RSHIFT N      &hm LCTRL E       &hm LALT I    &hm LGUI O    &kp RET
                 &td_caps     &kp Z         &kp X         &kp C            &kp D            &kp V                 &kp K             &kp H             &kp COMMA         &kp DOT       &kp FSLH      &kp RSHIFT
-                                           &kp C_PP      &kp LCTRL        &lt NUM SPACE    &lt SYSTEM RET        &lt SYSTEM RET    &lt MISC SPACE    &lt MEDIA BSPC    &none
+                                           &kp C_PP      &kp BSPC         &lt NUM SPACE    &lt SYSTEM RET        &lt SYSTEM RET    &lt MISC SPACE    &lt MEDIA BSPC    &none
             >;
         };
 
