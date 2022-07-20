@@ -248,10 +248,10 @@
             //                    | CTRL | CMD | SPC |   | RET | SPC | ALT |
 
             bindings = <
-                &kp TAB      &kp Q    &kp W    &kp E    &kp R    &kp T        &kp Y    &kp U    &kp I        &kp O      &kp P       &kp BSPC
-                &kp ESC      &kp A    &kp S    &kp D    &kp F    &kp G        &kp H    &kp J    &kp K        &kp L      &kp SEMI    &kp RET
-                &td_caps     &kp Z    &kp X    &kp C    &kp V    &kp B        &kp N    &kp M    &kp COMMA    &kp DOT    &kp FSLH    &kp RSHIFT
-                                      &trans   &trans   &trans   &trans       &trans   &trans   &trans       &trans
+                &kp TAB      &kp Q         &kp W         &kp E            &kp R          &kp T        &kp Y    &kp U           &kp I          &kp O         &kp P            &kp BSPC
+                &kp ESC      &hm LGUI A    &hm LALT S    &hm LCTRL D      &hm LSHFT F    &kp G        &kp H    &hm RSHIFT J    &hm LCTRL K    &hm LALT L    &hm LGUI SEMI    &kp RET
+                &td_caps     &kp Z         &kp X         &kp C            &kp V          &kp B        &kp N    &kp M           &kp COMMA      &kp DOT       &kp FSLH         &kp RSHIFT
+                                           &trans        &trans           &trans         &trans       &trans   &trans          &trans         &trans
             >;
         };
 
