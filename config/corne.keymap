@@ -207,7 +207,7 @@
 
         colmak_layer {
             label = "COLEMAK";
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+            sensor-bindings = <&inc_dec_kp U_UNDO U_REDO>;
 
 
             // ---------------------------------------------------------------------------------
@@ -226,6 +226,7 @@
 
         qwerty_layer {
             label = "QWERTY";
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 
             // -----------------------------------------------------------------------------------
             // | TAB  |  Q  |  W  |  E   |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  | BKSP  |
