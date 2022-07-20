@@ -116,13 +116,14 @@
 };
 
 // MACROS
-#define U_UNDO  LG(Z)
-#define U_CUT   LG(X)
-#define U_COPY  LG(C)
-#define U_PSTE  LG(V)
-#define U_REDO  LS(LG(Z))
-#define U_CLIP  LC(LG(C))
-#define U_SHOT  LS(LG(N4))
+#define U_UNDO    LG(Z)
+#define U_CUT     LG(X)
+#define U_COPY    LG(C)
+#define U_PSTE    LG(V)
+#define U_REDO    LS(LG(Z))
+#define U_CLIP    LC(LG(C))
+#define U_SHOT    LS(LG(N4))
+#define U_ALFRED  LG(SPACE))
 
 // CONFIGURATION
 #define COMBO(NAME, KEYPOS) \
@@ -174,6 +175,7 @@
         COMBO(RIGHT_BRACKET, 31 32)
         COMBO(SINGLE_QUOTE, 15 20)
         COMBO(DOUBLE_QUOTES, 15 16 19 20)
+        COMBO(U_ALFRED, 38 39)
         COMBO(EQUAL, 21 22)
         COMBO(PIPE, 20 21)
         COMBO(BACKSLASH, 8 18)
@@ -220,20 +222,19 @@
 
         colmak_layer {
             label = "COLEMAK";
-            sensor-bindings = <&inc_dec_kp U_UNDO U_REDO>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 
-
-            // ---------------------------------------------------------------------------------
-            // |  TAB  |  Q  | W  |  F   |  P  |  B  |   |  J  |  L  |  U  |  Y  |  '  | BKSP  |
-            // |  ESC  |  A  | R  |  S   |  T  |  G  |   |  M  |  N  |  E  |  I  |  O  | RET   |
-            // | SHIFT |  Z  | X  |  C   |  D  |  V  |   |  K  |  H  |  ,  |  .  |  /  | SHIFT |
-            //               | PP | CTRL | SPC | RET |   | RET | SPC | ALT |
+            // -------------------------------------------------------------0--------------------
+            // |  TAB  |  Q  | W  |  F   |  P  |  B  |   |  J  |  L  |  U   |  Y  |  '  | BKSP  |
+            // |  ESC  |  A  | R  |  S   |  T  |  G  |   |  M  |  N  |  E   |  I  |  O  | RET   |
+            // | SHIFT |  Z  | X  |  C   |  D  |  V  |   |  K  |  H  |  ,   |  .  |  /  | SHIFT |
+            //               | PP | CTRL | SPC | RET |   | RET | SPC | BKSP |
 
             bindings = <
-                &kp TAB      &kp Q         &kp W         &kp F            &kp P            &kp B                 &kp J             &kp L              &kp U           &kp Y         &kp SQT       &kp BSPC
-                &kp ESC      &hm LGUI A    &hm LALT R    &hm LCTRL S      &hm LSHFT T      &kp G                 &kp M             &hm RSHIFT N      &hm LCTRL E      &hm LALT I    &hm LGUI O    &kp RET
-                &td_caps     &kp Z         &kp X         &kp C            &kp D            &kp V                 &kp K             &kp H             &kp COMMA        &kp DOT       &kp FSLH      &kp RSHIFT
-                                           &kp C_PP      &kp LCTRL        &lt NUM SPACE    &lt SYSTEM RET        &lt SYSTEM RET    &lt MISC SPACE    &mt RALT BSPC    &none
+                &kp TAB      &kp Q         &kp W         &kp F            &kp P            &kp B                 &kp J             &kp L              &kp U            &kp Y         &kp SQT       &kp BSPC
+                &kp ESC      &hm LGUI A    &hm LALT R    &hm LCTRL S      &hm LSHFT T      &kp G                 &kp M             &hm RSHIFT N      &hm LCTRL E       &hm LALT I    &hm LGUI O    &kp RET
+                &td_caps     &kp Z         &kp X         &kp C            &kp D            &kp V                 &kp K             &kp H             &kp COMMA         &kp DOT       &kp FSLH      &kp RSHIFT
+                                           &kp C_PP      &kp LCTRL        &lt NUM SPACE    &lt SYSTEM RET        &lt SYSTEM RET    &lt MISC SPACE    &lt MEDIA BSPC    &none
             >;
         };
 
@@ -293,6 +294,23 @@
 
         system_layer {
             label = "SYSTEM";
+            sensor-bindings = <&inc_dec_kp U_UNDO U_REDO>;
+
+            // ------------------------------------------------------------------------------------------------------------------------
+            // |  COLEMAK |         |           |         |         |     |   |           |              |      |      |     | BKSP |
+            // |  USB/BT  |  BT_MAC | BT_iPhone |  BT_PC  | BT_iPad | BT4 |   |           |              |      |      |     |      |
+            // |          |         |           |         |         |     |   |           |              |      |      |     |      |
+            //                                  |         |         |     |   | Previous  |  Play/Pause  | Next |
+
+            bindings = <
+                &tog COLEMAK    &none           &none           &none           &reset          &bootloader         &none       &mkp LCLK         &mmv MOVE_UP      &mkp RCLK          &none     &kp BSPC
+                &out OUT_TOG    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4        &none       &mmv MOVE_LEFT    &mmv MOVE_DOWN    &mmv MOVE_RIGHT    &none     &none
+                &none           &none           &none           &none           &none           &none               &none       &none             &none             &none              &none     &none
+                                                &trans          &kp C_PREV      &kp C_PP        &kp C_NEXT          &kp C_PREV  &kp C_PP          &kp C_NEXT        &trans
+            >;
+        };
+        system_layer {
+            label = "MEDIA";
             sensor-bindings = <&inc_dec_kp PGDN PGUP>;
 
             // ------------------------------------------------------------------------------------------------------------------------
@@ -308,5 +326,6 @@
                                                 &trans          &none           &none           &trans              &kp C_PREV  &kp C_PP          &kp C_NEXT        &trans
             >;
         };
+
     };
 };
