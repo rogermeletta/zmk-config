@@ -100,6 +100,17 @@
     continue-list = <UNDERSCORE MINUS>;
 };
 
+// Mouse key configs
+&mmv {
+    time-to-max-speed-ms = <50>;
+};
+
+&mwh {
+    acceleration-exponent=<1>;
+};
+
+#define SCRL_UP   &mwh SCROLL_UP
+#define SCRL_DOWN &mwh SCROLL_DOWN
 
 // MACROS
 #define U_UNDO  LG(Z)
@@ -268,7 +279,7 @@
 
         system_layer {
             label = "SYSTEM";
-            sensor-bindings = <&inc_dec_mwh SCROLL_DOWN SCROLL_UP>;
+            sensor-bindings = <&inc_dec_kp SCRL_DOWN SCRL_UP>;
 
             // ------------------------------------------------------------------------------------------------------------------------
             // |  COLEMAK |         |           |         |         |     |   |           |              |      |      |     | BKSP |
