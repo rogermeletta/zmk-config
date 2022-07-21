@@ -150,7 +150,7 @@
 // CONFIGURATION
 #define COMBO(NAME, KEYPOS) \
     combo_##NAME { \
-        layers = <0 1>; \
+        layers = <0 1 2>; \
         timeout-ms = <40>; \
         key-positions = <KEYPOS>; \
         bindings = <&kp NAME>; \
