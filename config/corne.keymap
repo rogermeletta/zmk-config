@@ -177,8 +177,8 @@
 
         // Left-hand combos
         COMBO(AT_SIGN, 1 2)
-        COMBO(LEFT_BRACE, 15 16)
-        COMBO(LEFT_PARENTHESIS, 3 4)
+        COMBO(LEFT_PARENTHESIS, 15 16)
+        COMBO(LEFT_BRACE, 3 4)
         COMBO(LEFT_BRACKET, 27 28)
         COMBO(QUESTION, 2 3)
         COMBO(HASH, 2 12)
@@ -194,9 +194,9 @@
         // COMBO(U_PASTE, 22 23)
 
         // Right-hand combos
-        COMBO(RIGHT_BRACE, 19 20)
+        COMBO(RIGHT_PARENTHESIS, 19 20)
         COMBO(EXCLAMATION, 14 15)
-        COMBO(RIGHT_PARENTHESIS, 7 8)
+        COMBO(RIGHT_BRACE, 7 8)
         COMBO(RIGHT_BRACKET, 31 32)
         COMBO(SINGLE_QUOTE, 15 20)
         COMBO(DOUBLE_QUOTES, 15 16 19 20)
