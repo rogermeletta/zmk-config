@@ -204,12 +204,12 @@
         COMBO(EQUAL, 21 22)
         COMBO(PIPE, 20 21)
         COMBO(BACKSLASH, 8 18)
-        COMBO(MINUS, 32 33)
-        COMBO(PLUS, 8 9)
+        COMBO(PLUS, 32 33)
+        COMBO(MINUS, 8 9)
         COMBO(ASTERISK, 26 27)
         COMBO(LESS_THAN, 17 27)
         COMBO(GREATER_THAN, 18 28)
-        COMBO(UNDERSCORE, 27 28)
+        //COMBO(UNDERSCORE, 27 28)
     };
 
 
