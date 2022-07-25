@@ -332,7 +332,7 @@
             //                                         |         |         |     |   | Previous  |  Play/Pause  | Next |
 
             bindings = <
-                &tog COLEMAK    &none           &kp PREV_TAB    &kp NEW_TAB             &kp NEXT_TAB    &bootloader         &mwh SCROLL_UP     &mkp LCLK         &mmv MOVE_UP      &mkp RCLK          &none     &kp BSPC
+                &tog COLEMAK    &none           &kp PREV_TAB    &kp NEW_TAB             &kp NEXT_TAB    &bootloader         &mwh SCROLL_UP     &mkp LCLK         &mmv MOVE_UP      &mkp RCLK          &none     &kp DEL
                 &out OUT_TOG    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2            &bt BT_SEL 3    &bt BT_SEL 4        &mwh SCROLL_DOWN   &mmv MOVE_LEFT    &mmv MOVE_DOWN    &mmv MOVE_RIGHT    &none     &none
                 &none           &none           &none           &lt SLOW CLOSE_TAB      &mo FAST        &none               &none              &none             &none             &none              &none     &none
                                                 &trans          &kp C_PREV              &kp C_PP        &kp C_NEXT          &mkp LCLK          &mkp RCLK         &mkp MCLK         &none
