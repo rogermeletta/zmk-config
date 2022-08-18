@@ -6,9 +6,11 @@ manifest:
       url-base: https://github.com/krikun98
     - name: ftc
       url-base: https://github.com/ftc
+    - name: vesim
+      url-base: https://github.com/vesim987
   projects:
     - name: zmk
-      remote: ftc
+      remote: vesim
       revision: mouse-ftc
       import: app/west.yml
   self:
