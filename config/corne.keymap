@@ -13,7 +13,10 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <dt-bindings/zmk/mouse.h>
+#include <dt-bindings/zmk/trackball_pim447.h>
+
 // #include <dt-bindings/zmk/backlight.h>
+
 
 #define QWERTY   0
 #define COLEMAK  1
@@ -28,6 +31,18 @@
  * Source: https://github.com/zmkfirmware/zmk/blob/main/app/boards/shields/reviung41/boards/nice_nano.overlay
  * GitHub Issue: https://github.com/zmkfirmware/zmk/issues/885
  */
+
+// Add trackball support
+&pro_micro_i2c {
+    status = "okay";
+
+    trackball_pim447@a {
+        compatible = "pimoroni,trackball_pim447";
+        reg = <0xa>;
+        label = "TRACKBALL_PIM447";
+    };
+};
+
 
 &spi1 {
     compatible = "nordic,nrf-spim";
