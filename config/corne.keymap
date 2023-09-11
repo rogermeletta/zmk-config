@@ -270,16 +270,16 @@
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 
             // -----------------------------------------------------------------------------------
-            // | TAB  |  Q  |  W  |  E   |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  | EQUAL |
-            // | ESC  |  A  |  S  |  D   |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;  | PIPE  |
-            // |  +   |  Z  |  X  |  C   |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  |   _   |
+            // | TAB  |  Q  |  W  |  E   |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  | BKSP  |
+            // | ESC  |  A  |  S  |  D   |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;  | RET   |
+            // |  +   |  Z  |  X  |  C   |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  | SHIFT |
             //                    | CTRL | CMD | SPC |   | RET | SPC | ALT |
 
             bindings = <
-&kp TAB   &kp Q       &kp W         &kp E         &kp R           &kp T                   &kp Y           &kp U           &kp I         &kp O       &kp P          &kp EQUAL
-&kp ESC   &hm LGUI A  &hm LALT S    &hm LCTRL D   &hm LSHFT F     &kp G                   &kp H           &hm RSHIFT J    &hm LCTRL K   &hm LALT L  &hm LGUI SEMI  &kp PIPE
-&kp PLUS  &kp Z       &kp X         &kp C         &kp V           &kp B                   &kp N           &kp M           &kp COMMA     &kp DOT     &kp FSLH       &kp UNDERSCORE
-                      &kp C_PP      &lt NUM BSPC  &lt MISC SPACE  &lt SYSTEM RET          &lt SYSTEM RET  &lt MISC SPACE  &lt NUM BSPC  &none
+&kp TAB      &kp Q         &kp W         &kp E            &kp R           &kp T             &kp Y           &kp U           &kp I          &kp O         &kp P            &kp BSPC
+&kp ESC      &hm LGUI A    &hm LALT S    &hm LCTRL D      &hm LSHFT F     &kp G             &kp H           &hm RSHIFT J    &hm LCTRL K    &hm LALT L    &hm LGUI SEMI    &kp RET
+&td_caps     &kp Z         &kp X         &kp C            &kp V           &kp B             &kp N           &kp M           &kp COMMA      &kp DOT       &kp FSLH         &kp RSHIFT
+                           &kp C_PP      &lt NUM BSPC     &lt MISC SPACE  &lt SYSTEM RET    &lt SYSTEM RET  &lt MISC SPACE  &lt NUM BSPC   &none
             >;
         };
 
@@ -317,7 +317,7 @@
 &kp TAB    &rgb_ug RGB_EFF  &ext_power EP_TOG  &none            &none            &none       &kp FSLH         &kp N7   &kp N8  &kp N9  &kp KP_MINUS  &trans
 &kp LCTRL  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI    &rgb_ug RGB_BRI  &rgb_ug RGB_SPI  &none       &kp KP_ASTERISK  &kp N4   &kp N5  &kp N6  &kp KP_PLUS   &trans
 &kp LSHFT  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD    &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &none       &kp N0           &kp N1   &kp N2  &kp N3  &kp RET       &none
-                                               &trans           &kp LGUI         &kp LALT    &kp SPACE        &kp RET  &kp N0
+                            &trans             &trans           &kp LGUI         &kp LALT    &kp SPACE        &kp RET  &kp N0  &none
             >;
         };
 
@@ -336,7 +336,7 @@
 &kp TAB    &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp HOME     &kp UP    &kp END        &kp RPAR  &kp BSPC
 &kp LCTRL  &trans    &trans  &trans    &trans    &trans       &kp MINUS  &kp LEFT     &kp DOWN  &kp RIGHT      &kp BSLH  &kp GRAVE
 &kp LSHFT  &trans    &trans  &trans    &trans    &trans       &kp UNDER  &kp PAGE_UP  &kp LBRC  &kp PAGE_DOWN  &kp PIPE  &kp TILDE
-                             &trans    &kp LGUI  &kp RET      &kp SPACE  &kp RET      &kp N0
+                     &trans  &trans    &kp LGUI  &kp RET      &kp SPACE  &kp RET      &kp N0    &none
             >;
         };
 
