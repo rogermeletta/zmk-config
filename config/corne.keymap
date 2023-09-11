@@ -278,7 +278,7 @@
             bindings = <
 &kp TAB   &kp Q       &kp W         &kp E         &kp R           &kp T                   &kp Y           &kp U           &kp I         &kp O       &kp P          &kp EQUAL
 &kp ESC   &hm LGUI A  &hm LALT S    &hm LCTRL D   &hm LSHFT F     &kp G                   &kp H           &hm RSHIFT J    &hm LCTRL K   &hm LALT L  &hm LGUI SEMI  &kp PIPE
-&kp PLUS  &kp Z       &kp X         &kp C         &kp V           &kp B                   &kp N           &kp M           &kp COMMA     &kp DOT     &kp FSLH       &kp UNDER
+&kp PLUS  &kp Z       &kp X         &kp C         &kp V           &kp B                   &kp N           &kp M           &kp COMMA     &kp DOT     &kp FSLH       &kp UNDERSCORE
                       &kp C_PP      &lt NUM BSPC  &lt MISC SPACE  &lt SYSTEM RET          &lt SYSTEM RET  &lt MISC SPACE  &lt NUM BSPC  &none
             >;
         };
