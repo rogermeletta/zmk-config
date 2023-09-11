@@ -298,7 +298,7 @@
 &kp TAB   &kp Q       &kp W       &kp F        &kp P         &kp B             &kp J           &kp L           &kp U           &kp Y       &kp SQT     &kp BSPC
 &kp ESC   &hm LGUI A  &hm LALT R  &hm LCTRL S  &hm LSHFT T   &kp G             &kp M           &hm RSHIFT N    &hm LCTRL E     &hm LALT I  &hm LGUI O  &kp RET
 &td_caps  &kp Z       &kp X       &kp C        &kp D         &kp V             &kp K           &kp H           &kp COMMA       &kp DOT     &kp FSLH    &kp RSHIFT
-                      trans       &trans       &trans        &trans            &trans          &trans          &trans          &none
+                      &trans      &trans       &trans        &trans            &trans          &trans          &trans          &none
             >;
         };
 
