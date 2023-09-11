@@ -5,18 +5,17 @@
  */
 
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/led/led.h>
-#include <dt-bindings/zmk/rgb.h>
-#include <dt-bindings/zmk/ext_power.h>
-#include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <dt-bindings/zmk/mouse.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/rgb.h>
+
 // #include <dt-bindings/zmk/trackball_pim447.h>
-
 // #include <dt-bindings/zmk/backlight.h>
-
 
 #define QWERTY   0
 #define COLEMAK  1
@@ -31,11 +30,9 @@
  * Source: https://github.com/zmkfirmware/zmk/blob/main/app/boards/shields/reviung41/boards/nice_nano.overlay
  * GitHub Issue: https://github.com/zmkfirmware/zmk/issues/885
  */
-
 // Add trackball support
 // &pro_micro_i2c {
 //     status = "okay";
-
 //     trackball_pim447@a {
 //         compatible = "pimoroni,trackball_pim447";
 //         reg = <0xa>;
@@ -43,12 +40,13 @@
 //     };
 // };
 
-
 &spi1 {
     compatible = "nordic,nrf-spim";
     status = "okay";
     mosi-pin = <6>;
+
     // Unused pins, needed for SPI definition, but not used by the ws2812 driver itself.
+
     sck-pin = <5>;
     miso-pin = <7>;
 
@@ -57,11 +55,13 @@
         label = "WS2812";
 
         /* SPI */
-        reg = <0>; /* ignored, but necessary for SPI bindings */
+
+        reg = <0>;/* ignored, but necessary for SPI bindings */
         spi-max-frequency = <4000000>;
 
         /* WS2812 */
-        chain-length = <27>; /* arbitrary; change at will */
+
+        chain-length = <27>;/* arbitrary; change at will */
         spi-one-frame = <0x70>;
         spi-zero-frame = <0x40>;
         color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
@@ -78,10 +78,12 @@
         compatible = "zmk,matrix-transform";
         columns = <12>;
         rows = <4>;
+
         // | SW1  | SW2  | SW3  | SW4  | SW5  | SW6  |   | SW6  | SW5  | SW4  | SW3  | SW2  | SW1  |
         // | SW7  | SW8  | SW9  | SW10 | SW11 | SW12 |   | SW12 | SW11 | SW10 | SW9  | SW8  | SW7  |
         // | SW13 | SW14 | SW15 | SW16 | SW17 | SW18 |   | SW18 | SW17 | SW16 | SW15 | SW14 | SW13 |
         //                 SW19 | SW20 | SW21 | SW22 |   | SW21 | SW20 | SW19 | SW20
+
         map = <
             RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5)  RC(0,6) RC(0,7) RC(0,8) RC(0,9) RC(0,10) RC(0,11)
             RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5)  RC(1,6) RC(1,7) RC(1,8) RC(1,9) RC(1,10) RC(1,11)
@@ -89,18 +91,17 @@
                             RC(3,2) RC(3,3) RC(3,4) RC(3,5)  RC(3,6) RC(3,7) RC(3,8) RC(3,9)
         >;
     };
-
     left_encoder: encoder_left {
         compatible = "alps,ec11";
         label = "LEFT_ENCODER";
         a-gpios = <&pro_micro_d  9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&pro_micro_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         resolution = <4>;
-        };
+    };
 
-        sensors {
-            compatible = "zmk,keymap-sensors";
-            sensors = <&left_encoder>;
+    sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&left_encoder>;
     };
 };
 
@@ -112,27 +113,26 @@
  * Temporarily here because nice nano v2 spi is not defined on ZMk YET
  */
 
-
 &caps_word {
     continue-list = <UNDERSCORE MINUS>;
 };
-
 
 &lt {
     quick_tap_ms = <200>;
 };
 
-
 // Mouse key configs
+
 &mmv {
     time-to-max-speed-ms = <50>;
 };
 
 &mwh {
-    acceleration-exponent=<1>;
+    acceleration-exponent = <1>;
 };
 
 // MACROS
+
 #define U_UNDO    LG(Z)
 #define U_CUT     LG(X)
 #define U_COPY    LG(C)
@@ -141,34 +141,30 @@
 #define U_CLIP    LC(LG(C))
 #define U_SHOT    LS(LG(N4))
 #define U_ALFRED  LG(SPACE)
-
 #define PREV_TAB  LG(LA(LEFT))
 #define NEW_TAB   LG(LA(T))
 #define NEXT_TAB  LG(LA(RIGHT))
 #define CLOSE_TAB LG(W)
 
 /* Mouse move behavior */
+
 #define MOVE_VERT(vert) ((vert)&0xFFFF)
 #define MOVE_VERT_DECODE(encoded) (int16_t)((encoded)&0x0000FFFF)
 #define MOVE_HOR(hor) (((hor)&0xFFFF) << 16)
 #define MOVE_HOR_DECODE(encoded) (int16_t)(((encoded)&0xFFFF0000) >> 16)
-
 #define MOVE(hor, vert) (MOVE_HOR(hor) + MOVE_VERT(vert))
 
 #define F_MOVE_UP MOVE_VERT(-1600)
 #define F_MOVE_DOWN MOVE_VERT(1600)
 #define F_MOVE_LEFT MOVE_HOR(-1600)
 #define F_MOVE_RIGHT MOVE_HOR(1600)
-
 #define S_MOVE_UP MOVE_VERT(-300)
 #define S_MOVE_DOWN MOVE_VERT(300)
 #define S_MOVE_LEFT MOVE_HOR(-300)
 #define S_MOVE_RIGHT MOVE_HOR(300)
 
-
-
-
 // CONFIGURATION
+
 #define COMBO(NAME, KEYPOS) \
     combo_##NAME { \
         layers = <0 1 2>; \
@@ -182,10 +178,11 @@
         compatible = "zmk,combos";
 
         // special combo for capital words
-        combo_caps { \
-            timeout-ms = <40>; \
-            key-positions = <24 35>; \
-            bindings = <&caps_word>; \
+
+        combo_caps {
+            timeout-ms = <40>;
+            key-positions = <35>;
+            bindings = <&caps_word>;
         };
 
         //  ------------------------------------------------------------------------------------------
@@ -193,8 +190,8 @@
         //  |  12  |  13  |  14  |  15  |  16  |  17  |    |  18  |  19  |  20  |  21  |  22  |  23  |
         //  |  24  |  25  |  26  |  27  |  28  |  29  |    |  30  |  31  |  32  |  33  |  34  |  35  |
         //                   36  |  37  |  38  |  39  |    |  40  |  41  |  42  |
-
         // Left-hand combos
+
         COMBO(AT_SIGN, 1 2)
         COMBO(LEFT_PARENTHESIS, 15 16)
         COMBO(LEFT_BRACE, 3 4)
@@ -204,14 +201,15 @@
         COMBO(DOLLAR, 4 5)
         COMBO(TILDE, 10 11)
         COMBO(UNDERSCORE, 28 29)
+
         // COMBO(CARET, 12 22)
         // COMBO(AMPERSAND, 13 23)
         // COMBO(PERCENT, 11 21)
         // COMBO(GRAVE, 20 21)
         // COMBO(U_COPY, 22 23)
         // COMBO(U_PASTE, 22 23)
-
         // Right-hand combos
+
         COMBO(COLON, 6 7)
         COMBO(SEMICOLON, 18 19)
         COMBO(RIGHT_PARENTHESIS, 19 20)
@@ -227,10 +225,10 @@
         COMBO(PLUS, 32 33)
         COMBO(MINUS, 8 9)
         COMBO(ASTERISK, 26 27)
+
         // COMBO(LESS_THAN, 17 27)
         // COMBO(GREATER_THAN, 18 28)
     };
-
 
     // conditional_layers {
     //     compatible = "zmk,conditional-layers";
@@ -242,13 +240,15 @@
 
     behaviors {
         td_caps: tap_caps {
-                 compatible = "zmk,behavior-tap-dance";
-                 label = "Tap shift and caps";
-                 #binding-cells = <0>;
-                 tapping-term-ms = <200>;
-                 bindings = <&kp LSHIFT>, <&caps_word>, <&kp CAPSLOCK>;
+            compatible = "zmk,behavior-tap-dance";
+            label = "Tap shift and caps";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings =
+                <&kp LSHIFT>,
+                <&caps_word>,
+                <&kp CAPSLOCK>;
         };
-
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS";
@@ -256,10 +256,11 @@
             tapping-term-ms = <200>;
             quick_tap_ms = <200>;
             flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
+            bindings =
+                <&kp>,
+                <&kp>;
         };
     };
-
 
     keymap {
         compatible = "zmk,keymap";
@@ -275,10 +276,10 @@
             //               | PP | CTRL | SPC | RET |   | RET | SPC | BKSP |
 
             bindings = <
-                &kp TAB      &kp Q         &kp W         &kp F            &kp P            &kp B                 &kp J             &kp L             &kp U             &kp Y         &kp SQT       &kp BSPC
-                &kp ESC      &hm LGUI A    &hm LALT R    &hm LCTRL S      &hm LSHFT T      &kp G                 &kp M             &hm RSHIFT N      &hm LCTRL E       &hm LALT I    &hm LGUI O    &kp RET
-                &td_caps     &kp Z         &kp X         &kp C            &kp D            &kp V                 &kp K             &kp H             &kp COMMA         &kp DOT       &kp FSLH      &kp RSHIFT
-                                           &kp C_PP      &lt NUM BSPC     &lt MISC SPACE   &lt SYSTEM RET        &lt SYSTEM RET    &lt MISC SPACE    &lt NUM BSPC      &none
+&kp TAB   &kp Q       &kp W       &kp F        &kp P         &kp B             &kp J           &kp L           &kp U           &kp Y       &kp SQT     &kp BSPC
+&kp ESC   &hm LGUI A  &hm LALT R  &hm LCTRL S  &hm LSHFT T   &kp G             &kp M           &hm RSHIFT N    &hm LCTRL E     &hm LALT I  &hm LGUI O  &kp RET
+&td_caps  &kp Z       &kp X       &kp C        &kp D         &kp V             &kp K           &kp H           &kp COMMA       &kp DOT     &kp FSLH    &kp RSHIFT
+                                  &kp C_PP     &lt NUM BSPC  &lt MISC SPACE    &lt SYSTEM RET  &lt SYSTEM RET  &lt MISC SPACE
             >;
         };
 
@@ -293,10 +294,10 @@
             //                    | CTRL | CMD | SPC |   | RET | SPC | ALT |
 
             bindings = <
-                &kp TAB      &kp Q         &kp W         &kp E            &kp R          &kp T        &kp Y    &kp U           &kp I          &kp O         &kp P            &kp BSPC
-                &kp ESC      &hm LGUI A    &hm LALT S    &hm LCTRL D      &hm LSHFT F    &kp G        &kp H    &hm RSHIFT J    &hm LCTRL K    &hm LALT L    &hm LGUI SEMI    &kp RET
-                &td_caps     &kp Z         &kp X         &kp C            &kp V          &kp B        &kp N    &kp M           &kp COMMA      &kp DOT       &kp FSLH         &kp RSHIFT
-                                           &trans        &trans           &trans         &trans       &trans   &trans          &trans         &none
+&kp TAB   &kp Q       &kp W       &kp E        &kp R        &kp T     &kp Y   &kp U         &kp I        &kp O       &kp P          &kp EQUAL
+&kp ESC   &hm LGUI A  &hm LALT S  &hm LCTRL D  &hm LSHFT F  &kp G     &kp H   &hm RSHIFT J  &hm LCTRL K  &hm LALT L  &hm LGUI SEMI  &kp PIPE
+&kp PLUS  &kp Z       &kp X       &kp C        &kp V        &kp B     &kp N   &kp M         &kp COMMA    &kp DOT     &kp FSLH       &kp UNDERSCORE
+                                  &trans       &trans       &trans    &trans  &trans        &trans
             >;
         };
 
@@ -311,10 +312,10 @@
             //                    | GUI |LALT | SPC |   | RET |  0  |  .  |
 
             bindings = <
-                &kp TAB      &rgb_ug RGB_EFF    &ext_power EP_TOG    &none            &none                &none            &kp FSLH           &kp N7    &kp N8     &kp N9    &kp KP_MINUS    &trans
-                &kp LCTRL    &rgb_ug RGB_HUI    &rgb_ug RGB_SAI      &rgb_ug RGB_BRI  &rgb_ug RGB_SPI      &none            &kp KP_ASTERISK    &kp N4    &kp N5     &kp N6    &kp KP_PLUS     &trans
-                &kp LSHFT    &rgb_ug RGB_HUD    &rgb_ug RGB_SAD      &rgb_ug RGB_BRD  &rgb_ug RGB_SPD      &none            &kp N0             &kp N1    &kp N2     &kp N3    &kp RET         &none
-                                                &trans               &kp LGUI         &kp LALT             &kp SPACE        &kp RET            &kp N0    &kp KP_DOT &none
+&kp TAB    &rgb_ug RGB_EFF  &ext_power EP_TOG  &none            &none            &none       &kp FSLH         &kp N7   &kp N8  &kp N9  &kp KP_MINUS  &trans
+&kp LCTRL  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI    &rgb_ug RGB_BRI  &rgb_ug RGB_SPI  &none       &kp KP_ASTERISK  &kp N4   &kp N5  &kp N6  &kp KP_PLUS   &trans
+&kp LSHFT  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD    &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &none       &kp N0           &kp N1   &kp N2  &kp N3  &kp RET       &none
+                                               &trans           &kp LGUI         &kp LALT    &kp SPACE        &kp RET  &kp N0
             >;
         };
 
@@ -329,10 +330,10 @@
             //                    | GUI |     | SPC |   | RET |        |  ALT   |
 
             bindings = <
-                &kp  TAB     &kp EXCL    &kp AT    &kp HASH    &kp DLLR    &kp PRCNT        &kp CARET    &kp HOME       &kp UP      &kp END          &kp RPAR    &kp BSPC
-                &kp LCTRL    &trans      &trans    &trans      &trans      &trans           &kp MINUS    &kp LEFT       &kp DOWN    &kp RIGHT        &kp BSLH    &kp GRAVE
-                &kp LSHFT    &trans      &trans    &trans      &trans      &trans           &kp UNDER    &kp PAGE_UP    &kp LBRC    &kp PAGE_DOWN    &kp PIPE    &kp TILDE
-                                         &trans    &kp LGUI    &kp RET     &kp SPACE        &kp RET      &kp N0         &kp KP_DOT  &none
+&kp TAB    &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp HOME     &kp UP    &kp END        &kp RPAR  &kp BSPC
+&kp LCTRL  &trans    &trans  &trans    &trans    &trans       &kp MINUS  &kp LEFT     &kp DOWN  &kp RIGHT      &kp BSLH  &kp GRAVE
+&kp LSHFT  &trans    &trans  &trans    &trans    &trans       &kp UNDER  &kp PAGE_UP  &kp LBRC  &kp PAGE_DOWN  &kp PIPE  &kp TILDE
+                             &trans    &kp LGUI  &kp RET      &kp SPACE  &kp RET      &kp N0
             >;
         };
 
@@ -347,16 +348,16 @@
             //                                         |         |         |        |   | Previous  |  Play/Pause  | Next |
 
             bindings = <
-                &tog COLEMAK    &none           &kp PREV_TAB    &kp NEW_TAB             &kp NEXT_TAB    &bootloader         &mwh SCROLL_UP     &mkp LCLK         &mmv MOVE_UP      &mkp RCLK          &none     &kp DEL
-                &out OUT_TOG    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2            &bt BT_SEL 3    &bt BT_SEL 4        &mwh SCROLL_DOWN   &mmv MOVE_LEFT    &mmv MOVE_DOWN    &mmv MOVE_RIGHT    &none     &none
-                &none           &none           &none           &lt SLOW CLOSE_TAB      &mo FAST        &bt BT_CLR          &none              &none             &none             &none              &none     &none
-                                                &trans          &kp C_PREV              &kp C_PP        &kp C_NEXT          &mkp LCLK          &mkp RCLK         &mkp MCLK         &none
+&tog COLEMAK  &none         &kp PREV_TAB  &kp NEW_TAB         &kp NEXT_TAB  &bootloader     &mwh SCROLL_UP    &mkp LCLK       &mmv MOVE_UP    &mkp RCLK        &none  &kp DEL
+&out OUT_TOG  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2        &bt BT_SEL 3  &bt BT_SEL 4    &mwh SCROLL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none  &none
+&none         &none         &none         &lt SLOW CLOSE_TAB  &mo FAST      &bt BT_CLR      &none             &none           &none           &none            &none  &none
+                                          &trans              &kp C_PREV    &kp C_PP        &kp C_NEXT        &mkp LCLK       &mkp RCLK
             >;
         };
+
         fast_layer {
             label = "FAST";
             sensor-bindings = <&inc_dec_kp PGDN PGUP>;
-
 
             // -----------------------------------------------------------------------------------------------------------------------------
             // |     |     |     |     |     |     |      |                |                 |    Mouse up     |               |     |     |
@@ -365,10 +366,10 @@
             //             |     |     |     |     |      |  M click left  |  M click right  |  M click middle |
 
             bindings = <
-                &none    &none    &none    &none    &none    &none        &none       &mkp LCLK           &mmv F_MOVE_UP      &mkp RCLK            &none     &none
-                &none    &none    &none    &none    &none    &none        &none       &mmv F_MOVE_LEFT    &mmv F_MOVE_DOWN    &mmv F_MOVE_RIGHT    &none     &none
-                &none    &none    &none    &none    &none    &none        &none       &none               &none               &none                &none     &none
-                                           &none    &none    &none        &none       &mkp LCLK           &mkp RCLK           &mkp MCLK            &none
+&none  &none  &none  &none  &none  &none    &none  &mkp LCLK         &mmv F_MOVE_UP    &mkp RCLK          &none  &none
+&none  &none  &none  &none  &none  &none    &none  &mmv F_MOVE_LEFT  &mmv F_MOVE_DOWN  &mmv F_MOVE_RIGHT  &none  &none
+&none  &none  &none  &none  &none  &none    &none  &none             &none             &none              &none  &none
+                     &none  &none  &none    &none  &mkp LCLK         &mkp RCLK
             >;
         };
 
@@ -376,7 +377,6 @@
             label = "SLOW";
             sensor-bindings = <&inc_dec_kp PGDN PGUP>;
 
-
             // -----------------------------------------------------------------------------------------------------------------------------
             // |     |     |     |     |     |     |      |                |                 |    Mouse up     |               |     |     |
             // |     |     |     |     |     |     |      |                |  Mouse left     |   Mouse down    |  Mouse right  |     |     |
@@ -384,10 +384,10 @@
             //             |     |     |     |     |      |  M click left  |  M click right  |  M click middle |
 
             bindings = <
-                &none    &none    &none    &none    &none    &none        &none       &mkp LCLK           &mmv S_MOVE_UP      &mkp RCLK            &none     &none
-                &none    &none    &none    &none    &none    &none        &none       &mmv S_MOVE_LEFT    &mmv S_MOVE_DOWN    &mmv S_MOVE_RIGHT    &none     &none
-                &none    &none    &none    &none    &none    &none        &none       &none               &none               &none                &none     &none
-                                           &none    &none    &none        &none       &mkp LCLK           &mkp RCLK           &mkp MCLK           &none
+&none  &none  &none  &none  &none  &none    &none  &mkp LCLK         &mmv S_MOVE_UP    &mkp RCLK          &none  &none
+&none  &none  &none  &none  &none  &none    &none  &mmv S_MOVE_LEFT  &mmv S_MOVE_DOWN  &mmv S_MOVE_RIGHT  &none  &none
+&none  &none  &none  &none  &none  &none    &none  &none             &none             &none              &none  &none
+                     &none  &none  &none    &none  &mkp LCLK         &mkp RCLK
             >;
         };
     };
