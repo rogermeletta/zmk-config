@@ -270,7 +270,7 @@
         compatible = "zmk,keymap";
 
         qwerty_layer {
-            display-name = "QWERTY";
+            // display-name = "QWERTY";
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 
             // -----------------------------------------------------------------------------------
@@ -289,7 +289,7 @@
 
 
         colmak_layer {
-            display-name = "COLEMAK";
+            // display-name = "COLEMAK";
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 
             // -------------------------------------------------------------0--------------------
@@ -308,7 +308,7 @@
 
 
         num_layer {
-            display-name = "NUM";
+            // display-name = "NUM";
             sensor-bindings = <&inc_dec_kp C_PREV C_NEXT>;
 
             // -------------------------------------------------------------------------------
@@ -327,7 +327,7 @@
 
 
         misc_layer {
-            display-name = "MISC";
+            // display-name = "MISC";
             sensor-bindings = <&inc_dec_kp LEFT RIGHT>;
 
             // -----------------------------------------------------------------------------------------
@@ -346,7 +346,7 @@
 
 
         system_layer {
-            display-name = "SYSTEM";
+            // display-name = "SYSTEM";
             sensor-bindings = <&inc_dec_kp U_UNDO U_REDO>;
 
             // --------------------------------------------------------------------------------------------------------------------------------
@@ -365,7 +365,7 @@
 
 
         fast_layer {
-            display-name = "FAST";
+            // display-name = "FAST";
             sensor-bindings = <&inc_dec_kp PG_DN PG_UP>;
 
             // -----------------------------------------------------------------------------------------------------------------------------
@@ -384,7 +384,7 @@
 
 
         slow_layer {
-            display-name = "SLOW";
+            // display-name = "SLOW";
             sensor-bindings = <&inc_dec_kp PG_DN PG_UP>;
 
             // -----------------------------------------------------------------------------------------------------------------------------
