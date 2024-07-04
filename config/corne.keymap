@@ -96,7 +96,7 @@
         label = "LEFT_ENCODER";
         a-gpios = <&pro_micro_d  9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&pro_micro_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        steps = <80> /* Change this to your encoder's number of detents times 4 */;
+        //steps = <80> /* Change this to your encoder's number of detents times 4 */;
     };
 
     sensors {
