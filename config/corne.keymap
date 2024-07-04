@@ -242,6 +242,7 @@
     behaviors {
         td_caps: tap_caps {
             compatible = "zmk,behavior-tap-dance";
+            label = "TD_CAPS_BEHAVIOR";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings =
@@ -251,6 +252,7 @@
         };
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS_BEHAVIOR";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             quick_tap_ms = <200>;
