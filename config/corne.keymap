@@ -52,7 +52,6 @@
 
     led_strip: ws2812@0 {
         compatible = "worldsemi,ws2812-spi";
-        label = "WS2812";
 
         /* SPI */
 
@@ -93,10 +92,9 @@
     };
     left_encoder: encoder_left {
         compatible = "alps,ec11";
-        label = "LEFT_ENCODER";
         a-gpios = <&pro_micro_d  9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&pro_micro_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        resolution = <4>;
+        steps = <80> /* Change this to your encoder's number of detents times 4 */;
     };
 
     sensors {
@@ -241,7 +239,6 @@
     behaviors {
         td_caps: tap_caps {
             compatible = "zmk,behavior-tap-dance";
-            label = "Tap shift and caps";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings =
@@ -251,7 +248,6 @@
         };
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             quick_tap_ms = <200>;
@@ -266,11 +262,11 @@
         compatible = "zmk,keymap";
 
         qwerty_layer {
-            label = "QWERTY";
+            display-name = "QWERTY";
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 
             // -----------------------------------------------------------------------------------
-            // | TAB  |  Q  |  W  |  E   |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  | BKSP  |
+            // | TAB  |  Q  |  W  |  E   |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  | BKSP |
             // | ESC  |  A  |  S  |  D   |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;  | RET   |
             // |  +   |  Z  |  X  |  C   |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  | SHIFT |
             //                    | CTRL | CMD | SPC |   | RET | SPC | ALT |
@@ -285,7 +281,7 @@
 
 
         colmak_layer {
-            label = "COLEMAK";
+            display-name = "COLEMAK";
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 
             // -------------------------------------------------------------0--------------------
@@ -304,7 +300,7 @@
 
 
         num_layer {
-            label = "NUM";
+            display-name = "NUM";
             sensor-bindings = <&inc_dec_kp C_PREV C_NEXT>;
 
             // -------------------------------------------------------------------------------
@@ -323,7 +319,7 @@
 
 
         misc_layer {
-            label = "MISC";
+            display-name = "MISC";
             sensor-bindings = <&inc_dec_kp LEFT RIGHT>;
 
             // -----------------------------------------------------------------------------------------
@@ -342,7 +338,7 @@
 
 
         system_layer {
-            label = "SYSTEM";
+            display-name = "SYSTEM";
             sensor-bindings = <&inc_dec_kp U_UNDO U_REDO>;
 
             // --------------------------------------------------------------------------------------------------------------------------------
@@ -361,8 +357,8 @@
 
 
         fast_layer {
-            label = "FAST";
-            sensor-bindings = <&inc_dec_kp PGDN PGUP>;
+            display-name = "FAST";
+            sensor-bindings = <&inc_dec_kp PG_DN PG_UP>;
 
             // -----------------------------------------------------------------------------------------------------------------------------
             // |     |     |     |     |     |     |      |                |                 |    Mouse up     |               |     |     |
@@ -380,8 +376,8 @@
 
 
         slow_layer {
-            label = "SLOW";
-            sensor-bindings = <&inc_dec_kp PGDN PGUP>;
+            display-name = "SLOW";
+            sensor-bindings = <&inc_dec_kp PG_DN PG_UP>;
 
             // -----------------------------------------------------------------------------------------------------------------------------
             // |     |     |     |     |     |     |      |                |                 |    Mouse up     |               |     |     |
@@ -397,4 +393,12 @@
             >;
         };
     };
+};
+
+
+&sensors {
+    // Change this to your encoder's number of detents.
+    // If you have multiple encoders with different detents, see
+    // https://zmk.dev/docs/config/encoders#keymap-sensor-config
+    triggers-per-rotation = <20>;
 };
