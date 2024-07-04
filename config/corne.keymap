@@ -184,7 +184,6 @@
         // special combo for capital words
 
         combo_caps {
-            label = "COMBO_CAPS";
             timeout-ms = <40>;
             key-positions = <35>;
             bindings = <&caps_word>;
