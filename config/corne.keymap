@@ -100,6 +100,8 @@
     sensors {
         compatible = "zmk,keymap-sensors";
         sensors = <&left_encoder>;
+        triggers-per-rotation = <20>;
+
     };
 };
 
@@ -393,12 +395,4 @@
             >;
         };
     };
-};
-
-
-&sensors {
-    // Change this to your encoder's number of detents.
-    // If you have multiple encoders with different detents, see
-    // https://zmk.dev/docs/config/encoders#keymap-sensor-config
-    triggers-per-rotation = <20>;
 };
